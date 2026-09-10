@@ -221,3 +221,5 @@ main[tabindex]:focus-visible{outline:none}
 @media(prefers-reduced-motion:reduce){.contact-dialog[open]{animation:none}}
 
 .email-display{display:inline-flex;align-items:center;gap:9px;cursor:text;user-select:text;font-size:.875rem;max-width:100%;overflow-wrap:anywhere}.email-display>span{min-width:0}.gmail-icon{width:20px;height:16px;flex-shrink:0}.email-display.outline-link{border:0;padding:0;min-height:0}.email-display.email-contact{font-size:.8125rem}
+
+.project-story{font-size:.875rem;line-height:1.85;color:var(--muted);margin:4px 0 14px}.compact-repos>.text-link{display:inline-block;margin-bottom:20px}
