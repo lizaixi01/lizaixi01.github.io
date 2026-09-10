@@ -83,7 +83,7 @@ function article(slug) {
   return `<div class="article-layout"><article class="article">
     <a class="back" href="${url('articles')}">← 全部文章</a>
     <header><div class="eyebrow">${post.label}</div><h1>${post.title}</h1><p class="dek">${post.summary}</p>
-      <div class="article-meta"><span>${post.category}</span><span>约 ${readTime(post)} 分钟</span><span>修订于 2026.09.09</span></div></header>
+      <div class="article-meta"><span>${post.category}</span><span>约 ${readTime(post)} 分钟</span><span>修订于 ${post.updated || '2026.09.09'}</span></div></header>
     <p class="thesis">${post.thesis}</p>
     <nav class="mobile-toc" aria-label="本文目录"><details><summary>本文目录 · ${post.sections.length} 节</summary>${toc(post)}</details></nav>
     <div class="article-body">${post.sections.map((s,i) => `<section id="section-${i}">
