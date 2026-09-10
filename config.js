@@ -2,12 +2,12 @@ window.BLOG_CONFIG = {
   "name": "李在希",
   "title": "Home · Zaixi",
   "email": "lizaixi@gmail.com",
-  "githubUrl": "https://github.com/liz312948-crypto",
+  "githubUrl": "https://github.com/lizaixi01",
   "repositories": [
     {
       "id": "Learn-Agent",
       "name": "Learn-Agent",
-      "url": "https://github.com/liz312948-crypto/Learn-Agent",
+      "url": "https://github.com/lizaixi01/Learn-Agent",
       "tech": "JavaScript · VS Code",
       "status": "自用学习助手",
       "description": "让编程问答自动沉淀为可追溯的知识卡，学习继续，整理在后台完成。",
@@ -17,7 +17,7 @@ window.BLOG_CONFIG = {
     {
       "id": "opencode-lite",
       "name": "OpenCode-Lite",
-      "url": "https://github.com/liz312948-crypto/opencode-lite",
+      "url": "https://github.com/lizaixi01/opencode-lite",
       "tech": "Python · FastAPI",
       "status": "Alpha · 后端原型",
       "description": "在独立工作副本内接收审核后的补丁，执行受限测试，失败时验证回滚。",
@@ -27,7 +27,7 @@ window.BLOG_CONFIG = {
     {
       "id": "verilog-verification-agent",
       "name": "Verilog Verification Agent",
-      "url": "https://github.com/liz312948-crypto/verilog-verification-agent",
+      "url": "https://github.com/lizaixi01/verilog-verification-agent",
       "tech": "Python · Icarus Verilog",
       "status": "Alpha · 验证原型",
       "description": "模型生成 DUT，独立的确定性 testbench 验证七类固定电路，最多修复三次。",
@@ -37,7 +37,7 @@ window.BLOG_CONFIG = {
     {
       "id": "frameops",
       "name": "FrameOps",
-      "url": "https://github.com/liz312948-crypto/frameops",
+      "url": "https://github.com/lizaixi01/frameops",
       "tech": "Python · SQLite · Kimi",
       "status": "Alpha · 本地 CLI",
       "description": "从创意 brief 和参考图生成分镜，以检查点保存进度，支持审阅与有界修订。",
