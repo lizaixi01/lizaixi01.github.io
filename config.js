@@ -9,10 +9,10 @@ window.BLOG_CONFIG = {
       "name": "PiLoop",
       "url": "https://github.com/lizaixi01/PiLoop",
       "tech": "TypeScript · Node.js · Pi",
-      "status": "v0.1.1 · 本地 CLI",
-      "description": "沿用 Pi 原生终端与工具循环，通过主动执行约定和有范围的偏好记忆，减少重复指导。",
-      "focus": "按需调查 · 项目与通用偏好分离 · 可查看与停用的记忆",
-      "boundary": "行为依赖模型判断；小样本实验尚未证明稳定优于原版 Pi，后台持续工作尚未实现。"
+      "status": "v0.1.4 · 本地 CLI",
+      "description": "沿用 Pi 原生终端与工具循环，结合主动执行、分范围偏好记忆与按需网页验证，减少重复指导。",
+      "focus": "项目与通用偏好分离 · 桌面与窄屏检查 · 截图与验证报告",
+      "boundary": "验证依赖模型调用与本机浏览器环境，并非强制门禁；小样本实验尚未证明稳定优于原版 Pi。"
     },
     {
       "id": "Learn-Agent",
