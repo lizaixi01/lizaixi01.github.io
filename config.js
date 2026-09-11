@@ -15,6 +15,16 @@ window.BLOG_CONFIG = {
       "boundary": "当前通过 VSIX 分发，学习效果尚未系统评估。"
     },
     {
+      "id": "PiLoop",
+      "name": "PiLoop",
+      "url": "https://github.com/lizaixi01/PiLoop",
+      "tech": "TypeScript · Node.js · Pi",
+      "status": "v0.1.1 · 本地 CLI",
+      "description": "沿用 Pi 原生终端与工具循环，通过主动执行约定和有范围的偏好记忆，减少重复指导。",
+      "focus": "按需调查 · 项目与通用偏好分离 · 可查看与停用的记忆",
+      "boundary": "行为依赖模型判断；小样本实验尚未证明稳定优于原版 Pi，后台持续工作尚未实现。"
+    },
+    {
       "id": "opencode-lite",
       "name": "OpenCode-Lite",
       "url": "https://github.com/lizaixi01/opencode-lite",
