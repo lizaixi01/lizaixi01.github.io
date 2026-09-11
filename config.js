@@ -5,16 +5,6 @@ window.BLOG_CONFIG = {
   "githubUrl": "https://github.com/lizaixi01",
   "repositories": [
     {
-      "id": "Learn-Agent",
-      "name": "Learn-Agent",
-      "url": "https://github.com/lizaixi01/Learn-Agent",
-      "tech": "JavaScript · VS Code",
-      "status": "自用学习助手",
-      "description": "让编程问答自动沉淀为可追溯的知识卡，学习继续，整理在后台完成。",
-      "focus": "后台队列 · 跨会话记忆 · 来源追溯",
-      "boundary": "当前通过 VSIX 分发，学习效果尚未系统评估。"
-    },
-    {
       "id": "PiLoop",
       "name": "PiLoop",
       "url": "https://github.com/lizaixi01/PiLoop",
@@ -23,6 +13,16 @@ window.BLOG_CONFIG = {
       "description": "沿用 Pi 原生终端与工具循环，通过主动执行约定和有范围的偏好记忆，减少重复指导。",
       "focus": "按需调查 · 项目与通用偏好分离 · 可查看与停用的记忆",
       "boundary": "行为依赖模型判断；小样本实验尚未证明稳定优于原版 Pi，后台持续工作尚未实现。"
+    },
+    {
+      "id": "Learn-Agent",
+      "name": "Learn-Agent",
+      "url": "https://github.com/lizaixi01/Learn-Agent",
+      "tech": "JavaScript · VS Code",
+      "status": "自用学习助手",
+      "description": "让编程问答自动沉淀为可追溯的知识卡，学习继续，整理在后台完成。",
+      "focus": "后台队列 · 跨会话记忆 · 来源追溯",
+      "boundary": "当前通过 VSIX 分发，学习效果尚未系统评估。"
     },
     {
       "id": "opencode-lite",
