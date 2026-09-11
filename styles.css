@@ -12,6 +12,9 @@
   --line:#41463d; --accent:#e4b292; --soft:#2d332a;
 }
 * { box-sizing:border-box; }
+/* Hide only the document scrollbar; preserve native scrolling and nested controls. */
+html { scrollbar-width:none; }
+html::-webkit-scrollbar { display:none; width:0; height:0; }
 body { margin:0; color:var(--ink); background:var(--bg); }
 a { color:inherit; text-decoration:none; }
 a:hover { color:var(--accent); }
