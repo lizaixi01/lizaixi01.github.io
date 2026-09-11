@@ -42,7 +42,7 @@ function card(post) {
   </a>`;
 }
 function contactLinks() {
-  return `<div class="actions"><button class="solid-link" type="button" data-contact>联系我 <span aria-hidden="true">↗</span></button><a class="outline-link" href="${url('projects')}">了解 Learn-Agent →</a></div>`;
+  return `<div class="actions"><button class="solid-link" type="button" data-contact>联系我 <span aria-hidden="true">↗</span></button></div>`;
 }
 function projectRow(repo, index) {
  const target = repo.id === 'Learn-Agent' ? url('case','learn-agent') : safeUrl(repo.url);
