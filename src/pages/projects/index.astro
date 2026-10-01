@@ -1,0 +1,10 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { projects, site } from '../../data/site';
+---
+<Base title="项目" active="projects" description="Zaixi 的公开工程项目：PiLoop、Legion、Learn-Agent、Verilog Verification Agent、FrameOps 与其他实验。">
+  <header class="page-intro"><span class="kicker">项目 / 开源实践</span><h1>从想法，到可检查的实现。</h1><p>围绕 Agent 的执行、记忆与验收，做能运行、能追溯，也能说明边界的工具。</p></header>
+  {['工程项目','小型实验'].map(group => <section class="project-group"><div class="group-heading"><h2>{group}</h2><span>{projects.filter(p => p.group===group).length} 个项目</span></div><div class="project-grid">{projects.filter(p => p.group===group).map(p => <ProjectCard project={p}/>)}</div></section>)}
+  <p class="source-note">介绍依据公开仓库 README 整理，更新于 2026.10.01。能力与验证边界以各仓库说明为准。<br/><a href={site.github} target="_blank" rel="noopener noreferrer">在 GitHub 查看其他学习与实验仓库 ↗</a></p>
+</Base>

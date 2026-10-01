@@ -1,0 +1,11 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Icon from './Icon.astro';
+interface Props { article: CollectionEntry<'articles'>; description?: boolean }
+const { article, description = false } = Astro.props;
+const { data } = article;
+---
+<a class="article-row" href={`/articles/${article.id}/`}>
+  <div class="article-row-meta"><span>{data.category}</span><time datetime={data.updated}>{data.updated.replaceAll('-', '.')}</time></div>
+  <div><h3>{data.title}</h3>{description && <p>{data.description}</p>}</div><Icon name="arrow" />
+</a>

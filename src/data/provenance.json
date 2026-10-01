@@ -1,0 +1,35 @@
+{
+  "reviewed": "2026-10-01",
+  "reference": "https://github.com/joyehuang/blog",
+  "referenceCommit": "17e0eda5d7befe82682072ba5e3b18991e80bc45",
+  "sources": [
+    {
+      "project": "PiLoop",
+      "url": "https://github.com/lizaixi01/PiLoop/blob/main/README.md"
+    },
+    {
+      "project": "Legion",
+      "url": "https://github.com/lizaixi01/Legion/blob/main/README.md"
+    },
+    {
+      "project": "Learn-Agent",
+      "url": "https://github.com/lizaixi01/Learn-Agent/blob/main/README.md"
+    },
+    {
+      "project": "opencode-lite",
+      "url": "https://github.com/lizaixi01/opencode-lite/blob/main/README.md"
+    },
+    {
+      "project": "verilog-verification-agent",
+      "url": "https://github.com/lizaixi01/verilog-verification-agent/blob/main/README.md"
+    },
+    {
+      "project": "frameops",
+      "url": "https://github.com/lizaixi01/frameops/blob/main/README.md"
+    },
+    {
+      "project": "nailong-codex-pet",
+      "url": "https://github.com/lizaixi01/nailong-codex-pet/blob/main/README.md"
+    }
+  ]
+}

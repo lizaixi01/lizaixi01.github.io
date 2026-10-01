@@ -1,0 +1,6 @@
+work/
+outputs/
+.playwright-cli/
+node_modules/
+.astro/
+dist/

@@ -1,0 +1,13 @@
+---
+import Icon from './Icon.astro';
+import type { Project } from '../data/site';
+interface Props { project: Project; compact?: boolean }
+const { project: p, compact = false } = Astro.props;
+---
+<article class:list={['project-card', compact && 'compact']}>
+  <div class="project-meta"><span>{p.status}</span><span class="project-code" aria-hidden="true">{p.id === 'PiLoop' ? '>_' : p.id === 'Legion' ? '↗↗' : '⌘'}</span></div>
+  <a class="project-title" href={`/projects/${p.id}/`}><h3>{p.name}</h3><Icon name="arrow" /></a>
+  <p>{p.description}</p>
+  {!compact && <><p class="project-focus">{p.focus}</p><p class="boundary">{p.boundary}</p></>}
+  <div class="project-bottom"><span>{p.tech}</span><a href={p.url} target="_blank" rel="noopener noreferrer" aria-label={`${p.name} GitHub 仓库`}><Icon name="github" /><span>GitHub</span><span aria-hidden="true">↗</span></a></div>
+</article>

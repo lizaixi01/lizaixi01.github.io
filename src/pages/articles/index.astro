@@ -1,0 +1,13 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ArticleRow from '../../components/ArticleRow.astro';
+const articles = (await getCollection('articles')).sort((a,b) => a.data.order-b.data.order);
+const categories = ['全部',...new Set(articles.map(p => p.data.category))];
+---
+<Base title="文章" active="articles" description="从个人项目与学习出发，记录关于 Agent 环境、独立验证、上下文和形式化数学的思考。">
+  <header class="page-intro"><span class="kicker">文章 / {articles.length} 篇</span><h1>把问题想清楚，<br/>把过程留下来。</h1><p>从个人项目与学习中提出问题，记录当前判断和待验证的假设。工程结论需要回到真实任务、约束和证据中检验。</p></header>
+  <div class="list-toolbar"><div class="filters" aria-label="文章分类">{categories.map((c,i) => <button data-category={c} aria-pressed={i===0}>{c}</button>)}</div><label class="sr-only" for="article-search">搜索文章标题与简介</label><input class="list-search" id="article-search" data-article-search type="search" placeholder="搜索文章…"/></div>
+  <p class="result-count" data-result-count aria-live="polite">共 {articles.length} 篇文章</p>
+  <div>{articles.map(article => <div data-article data-category={article.data.category}><ArticleRow article={article} description/></div>)}</div>
+</Base>

@@ -1,0 +1,42 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import { site } from '../data/site';
+import Icon from '../components/Icon.astro';
+import Gmail from '../components/Gmail.astro';
+import '../styles/global.css';
+interface Props { title?: string; description?: string; active?: string }
+const { title, description = site.description, active = 'home' } = Astro.props;
+const fullTitle = title ? `${title} · Zaixi` : site.title;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const nav = [['home', '/', '首页'], ['articles', '/articles/', '文章'], ['projects', '/projects/', '项目'], ['about', '/about/', '关于']];
+---
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>{fullTitle}</title><meta name="description" content={description}/><link rel="canonical" href={canonical}/>
+  <meta property="og:title" content={fullTitle}/><meta property="og:description" content={description}/><meta property="og:type" content={active === 'articles' ? 'article' : 'website'}/><meta property="og:url" content={canonical}/><meta property="og:image" content={new URL('/assets/zaixi.jpg', Astro.site)}/>
+  <meta name="theme-color" content="#f7f5ef"/><link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <link rel="alternate" type="application/rss+xml" title="Zaixi 的文章" href="/rss.xml"/>
+  <script is:inline>
+    (() => { let theme; try { theme = localStorage.getItem('loop-theme'); } catch {} document.documentElement.dataset.theme = ['light','dark'].includes(theme) ? theme : matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light'; })();
+  </script>
+  <ClientRouter />
+</head>
+<body>
+  <a class="skip-link" href="#main">跳至正文</a>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand" href="/">Home <span>·</span> Zaixi</a>
+      <nav aria-label="主导航">{nav.map(([id, href, label]) => <a href={href} aria-current={active === id ? 'page' : undefined}>{label}</a>)}</nav>
+      <div class="header-tools"><button data-search aria-label="搜索文章与项目" title="搜索（Ctrl / ⌘ K）"><Icon name="search"/></button><button data-theme aria-label="切换主题" title="切换主题"><Icon name="moon" class="moon"/><Icon name="sun" class="sun"/></button></div>
+    </header>
+    <main id="main" tabindex="-1"><slot /></main>
+    <footer><div><a class="footer-name" href="/">Zaixi</a><span>© 2026 李在希</span></div><div class="footer-links"><a href="/links/">友链</a><a href="/rss.xml">RSS</a><a href={site.github} target="_blank" rel="noopener noreferrer"><Icon name="github"/>GitHub ↗</a><button class="text-button" data-contact>联系我 ↗</button></div></footer>
+  </div>
+  <dialog class="contact-dialog" aria-labelledby="contact-title"><button class="dialog-close" data-close aria-label="关闭联系窗口"><Icon name="close"/></button><span class="kicker">保持联系</span><h2 id="contact-title">你好，我是 Zaixi。</h2><p>聊聊 Agent、项目，或实习机会。</p><img src="/assets/wechat.jpg" width="818" height="1215" alt="Zaixi 的微信好友二维码" loading="lazy"/><Gmail/><button class="copy-email" data-copy={site.email}>复制邮箱</button></dialog>
+  <dialog class="search-dialog" aria-labelledby="search-title"><div class="search-top"><Icon name="search"/><label class="sr-only" id="search-title" for="site-search">搜索文章与项目</label><input type="search" id="site-search" placeholder="搜索文章与项目…" autocomplete="off"/><button data-close aria-label="关闭搜索"><Icon name="close"/></button></div><div id="search-results" aria-live="polite"><p>输入关键词，查找本站文章与项目。</p></div><div class="search-help"><span>文章 · 项目 · 设计记录</span><kbd>Esc 关闭</kbd></div></dialog>
+  <button class="back-top" aria-label="回到顶部" title="回到顶部">↑</button><div class="toast" role="status" aria-live="polite"></div>
+  <script>import '../scripts/site';</script>
+</body>
+</html>
