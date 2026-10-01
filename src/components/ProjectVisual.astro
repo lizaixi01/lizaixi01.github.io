@@ -1,0 +1,7 @@
+---
+interface Props { id: string }
+const { id } = Astro.props;
+---
+<div class:list={['project-visual', `visual-${id.toLowerCase()}`]} aria-hidden="true">
+  {id === 'PiLoop' ? <div class="mini-terminal"><div><i/><i/><i/><span>piloop / run</span></div><p><span>❯</span> pi --goal</p><p class="terminal-sub">context → tools → verify</p><div class="terminal-result"><span>✓</span> 循环继续，证据留下。</div><span class="terminal-cursor"/></div> : id === 'Legion' ? <div class="dag-visual"><span class="dag-node manager">Manager</span><div class="dag-branches"><span class="dag-node">Worker 01</span><span class="dag-node">Worker 02</span><span class="dag-node">Verifier <b>✓</b></span></div></div> : id === 'Learn-Agent' ? <div class="knowledge-visual"><div>学习继续 <span>↗</span></div><span>异步编程</span><span>上下文</span><span>工具调用</span><div class="knowledge-line"/><small>知识在后台整理。</small></div> : <div class="abstract-visual"><span>{id === 'verilog-verification-agent' ? '01 → 10' : id === 'opencode-lite' ? '{ patch }' : id === 'frameops' ? '[ 01 / 02 / 03 ]' : '◕ ◡ ◕'}</span><div/><small>{id === 'verilog-verification-agent' ? 'simulate · verify · repair' : id === 'opencode-lite' ? 'approve · test · rollback' : id === 'frameops' ? 'brief · storyboard · checkpoint' : 'nine animations / sixteen directions'}</small></div>}
+</div>

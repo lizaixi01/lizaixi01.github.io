@@ -1,11 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import Icon from './Icon.astro';
-interface Props { article: CollectionEntry<'articles'>; description?: boolean }
-const { article, description = false } = Astro.props;
+interface Props { article: CollectionEntry<'articles'>; description?: boolean; index?: number }
+const { article, description = false, index = 0 } = Astro.props;
 const { data } = article;
 ---
-<a class="article-row" href={`/articles/${article.id}/`}>
-  <div class="article-row-meta"><span>{data.category}</span><time datetime={data.updated}>{data.updated.replaceAll('-', '.')}</time></div>
-  <div><h3>{data.title}</h3>{description && <p>{data.description}</p>}</div><Icon name="arrow" />
-</a>
+<a class="essay-row" href={`/articles/${article.id}/`} data-reveal><span class="essay-number">{String(index+1).padStart(2,'0')}</span><div class="essay-content"><div class="essay-meta"><span>{data.category}</span><time datetime={data.updated}>{data.updated.replaceAll('-', '/')}</time></div><h3>{data.title}</h3>{description && <p>{data.description}</p>}</div><span class="essay-arrow"><Icon name="arrow"/></span></a>

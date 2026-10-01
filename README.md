@@ -4,7 +4,7 @@
 
 网站：https://lizaixi01.github.io/ 。发布仓库：https://github.com/lizaixi01/lizaixi01.github.io 。
 
-参考 joyehuang/blog 的 Astro 结构、分栏内容组织与阅读体验，保留米白／深绿主题。静态 HTML 页面、独立 Markdown 文章、类型明确的项目配置和共享组件。
+参考 joyehuang/blog 的技术博客与交互思路，重新设计全部页面和动效。采用黑白／冷蓝配色、桌面侧边导航、移动端底部导航、图形化项目封面与独立阅读布局。静态 HTML 页面、独立 Markdown 文章、类型明确的项目配置和共享组件。
 
 ## 本地开发
 
@@ -24,6 +24,8 @@ Node.js 22.12+：先运行 npm ci，再运行 npm start，打开 http://127.0.0.
 文章与项目详情在构建时生成。搜索索引、RSS、sitemap 都是本地静态文件；页面不在访问时调用 GitHub API，也不加载外部字体、分析或评论脚本。原始文章、引用、Learn-Agent 设计记录保留，旧 #/home、#/post/... 等分享地址转到新路径。
 
 全站隐藏文档滚动条，保留滚轮、触控和键盘滚动。深色模式保留原 loop-theme 偏好。邮箱是可选择纯文本，另提供复制按钮；微信在联系弹窗展示。
+
+快捷终端通过顶部按钮或反引号打开，支持 help、ls、open、whoami、search、contact、theme 和 clear，仅用于本站导航，不执行操作系统命令。搜索支持 Ctrl/Cmd K、上下方向键与 Enter。滚动入场、卡片交互和页面切换均尊重减少动态效果设置；禁用 JavaScript 后文章仍可阅读。
 
 ## 发布约定
 

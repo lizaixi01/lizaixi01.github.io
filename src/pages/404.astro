@@ -1,4 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
 ---
-<Base title="页面未找到"><header class="page-intro"><span class="kicker">404</span><h1>这条路径还没有内容。</h1><p>可以回到首页，或搜索本站文章与项目。</p><a class="pill" href="/">回到首页 →</a></header></Base>
+<Base title="页面未找到"><PageHeader number="404" label="路径不存在" title="这条路径，还没有内容。" description="可以回到首页，或者搜索本站的文章与项目。"/><a class="button primary" href="/">回到首页 →</a></Base>

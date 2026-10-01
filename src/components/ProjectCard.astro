@@ -1,13 +1,11 @@
 ---
 import Icon from './Icon.astro';
+import ProjectVisual from './ProjectVisual.astro';
 import type { Project } from '../data/site';
-interface Props { project: Project; compact?: boolean }
-const { project: p, compact = false } = Astro.props;
+interface Props { project: Project; compact?: boolean; index?: number }
+const { project: p, compact = false, index = 0 } = Astro.props;
 ---
-<article class:list={['project-card', compact && 'compact']}>
-  <div class="project-meta"><span>{p.status}</span><span class="project-code" aria-hidden="true">{p.id === 'PiLoop' ? '>_' : p.id === 'Legion' ? '↗↗' : '⌘'}</span></div>
-  <a class="project-title" href={`/projects/${p.id}/`}><h3>{p.name}</h3><Icon name="arrow" /></a>
-  <p>{p.description}</p>
-  {!compact && <><p class="project-focus">{p.focus}</p><p class="boundary">{p.boundary}</p></>}
-  <div class="project-bottom"><span>{p.tech}</span><a href={p.url} target="_blank" rel="noopener noreferrer" aria-label={`${p.name} GitHub 仓库`}><Icon name="github" /><span>GitHub</span><span aria-hidden="true">↗</span></a></div>
+<article class:list={['work-card', compact && 'compact']} data-reveal style={`--reveal-delay:${Math.min(index,3)*65}ms`}>
+  <a class="work-cover" href={`/projects/${p.id}/`} aria-label={`了解 ${p.name}`} tabindex="-1"><ProjectVisual id={p.id}/><span class="cover-arrow"><Icon name="external"/></span></a>
+  <div class="work-body"><div class="work-meta"><span>{String(index+1).padStart(2,'0')}</span><span>{p.status}</span></div><a class="work-title" href={`/projects/${p.id}/`}><h3>{p.name}</h3><Icon name="arrow"/></a><p>{p.description}</p>{!compact && <div class="work-boundary"><span>当前边界</span>{p.boundary}</div>}<div class="work-footer"><span>{p.tech}</span><a href={p.url} target="_blank" rel="noopener noreferrer" aria-label={`${p.name} GitHub 仓库`}><Icon name="github"/><span>源码</span><Icon name="external"/></a></div></div>
 </article>

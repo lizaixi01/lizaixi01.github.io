@@ -15,7 +15,12 @@ const published = [];
 function copyBuild(dir, prefix='') { for(const entry of fs.readdirSync(dir,{withFileTypes:true})) { const relative = path.join(prefix,entry.name); if(entry.isDirectory()) copyBuild(path.join(dir,entry.name),relative); else { fs.mkdirSync(path.dirname(path.join(repo,relative)),{recursive:true}); fs.copyFileSync(path.join(dir,entry.name),path.join(repo,relative)); published.push(relative.replaceAll('\\','/')); } } }
 copyBuild('dist');
 if(repo !== path.resolve('.')) {
-  for(const dir of ['src','public','scripts']) fs.cpSync(dir,path.join(repo,dir),{recursive:true});
+  for(const dir of ['src','public','scripts']) {
+    const target = path.resolve(repo,dir);
+    if(!target.startsWith(repo+path.sep) || !['src','public','scripts'].includes(path.basename(target))) throw new Error('Invalid source directory');
+    fs.rmSync(target,{recursive:true,force:true});
+    fs.cpSync(dir,target,{recursive:true});
+  }
   for(const file of ['package.json','package-lock.json','astro.config.mjs','tsconfig.json','vercel.json','README.md','NOTICE.md','.gitignore']) fs.copyFileSync(file,path.join(repo,file));
 }
 fs.writeFileSync(manifestPath,JSON.stringify(published,null,2)+'\n');
