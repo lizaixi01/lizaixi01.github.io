@@ -1,0 +1,1 @@
+var e;async function t(t,n=10){e??=fetch(`/search.json`).then(e=>{if(!e.ok)throw Error(`HTTP ${e.status}`);return e.json()}).catch(t=>{throw e=void 0,t});let r=t.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);return r.length?(await e).filter(e=>r.every(t=>`${e.title} ${e.description} ${e.text}`.toLocaleLowerCase().includes(t))).slice(0,n):[]}export{t};

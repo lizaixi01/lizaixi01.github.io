@@ -1,13 +1,32 @@
 ---
-import Base from '../../layouts/Base.astro';
-import PageHeader from '../../components/PageHeader.astro';
-import ProjectCard from '../../components/ProjectCard.astro';
-import { projects, site } from '../../data/site';
+import { projects, site } from '@/data/site'
+
+import PageLayout from '@/layouts/CommonPage.astro'
+import ProjectSection from '@/components/projects/ProjectSection.astro'
+
+const headings = [
+  { depth: 2, slug: 'open-source', text: 'Open Source' },
+  { depth: 2, slug: 'experiments', text: 'Experiments' }
+]
+const list = (group: string) =>
+  projects
+    .filter((project) => project.group === group)
+    .map((project) => ({
+      id: project.id,
+      name: project.name,
+      description: project.description,
+      links: [
+        { type: 'doc', href: `/projects/${project.id}/` },
+        { type: 'github', href: project.url }
+      ]
+    }))
 ---
-<Base title="项目" active="projects" description="Zaixi 的公开工程项目：PiLoop、Legion、Learn-Agent、Verilog Verification Agent、FrameOps 与其他实验。">
-  <PageHeader number="03" label="项目" title="在实践里找答案。" description="执行、记忆、验证与用户体验。这些项目是我把问题拆开，再亲手实现的过程。"/>
-  <div class="collection-toolbar" data-reveal><div class="filter-tabs" aria-label="项目分类">{['全部','工程项目','小型实验'].map((group,i) => <button data-project-filter={group} aria-pressed={i===0}>{group}</button>)}</div><a class="subtle-link" href={site.github} target="_blank" rel="noopener noreferrer">GitHub 上的全部仓库 ↗</a></div>
-  <p class="result-count" data-project-count aria-live="polite">共 {projects.length} 个项目</p>
-  <div class="work-grid project-gallery">{projects.map((p,index) => <div data-project data-group={p.group}><ProjectCard project={p} index={index}/></div>)}</div>
-  <p class="source-note">介绍依据公开仓库 README 整理，资料核对于 2026.10.01。原型的能力与验证边界以各仓库说明为准。</p>
-</Base>
+
+<PageLayout title='Projects' {headings}>
+  <p>我的公开项目，围绕 Agent 的执行、记忆、协作和验证展开。</p>
+  <p><a href={site.github} target='_blank' rel='noopener noreferrer'>GitHub · lizaixi01 ↗</a></p>
+  <h2 id='open-source'>Open Source</h2>
+  <ProjectSection project={list('工程项目')} />
+  <h2 id='experiments'>Experiments</h2>
+  <ProjectSection project={list('小型实验')} />
+</PageLayout>

@@ -1,0 +1,23 @@
+---
+import { site } from '@/data/site'
+
+import PageLayout from '@/layouts/CommonPage.astro'
+import LinkCard from '@/components/home/LinkCard.astro'
+
+const info = `Name: Zaixi Personal Blog\nDesc: ${site.description}\nLink: https://lizaixi01.github.io/\nAvatar: https://lizaixi01.github.io/assets/avatar.webp`
+---
+
+<PageLayout title='Links'>
+  <p>在各自的路上，交换想法。</p>
+  <LinkCard
+    href='https://www.joyehuang.me/'
+    heading='Joye Personal Blog'
+    subheading='AI Agent、全栈开发与个人思考。'
+  />
+  <h2>我的网站信息</h2><p>交换友链可以通过邮箱或微信联系我。</p>
+  <pre>{info}</pre><button
+    class='not-prose rounded-full border px-4 py-2 text-sm hover:bg-muted'
+    data-copy={info}>复制网站信息</button
+  >
+  <p><a href='/contact/'>与我联系 →</a></p>
+</PageLayout>

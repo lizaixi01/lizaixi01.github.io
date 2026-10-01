@@ -1,20 +1,71 @@
 ---
-import { getCollection, render } from 'astro:content';
-import Base from '../../layouts/Base.astro';
-import Icon from '../../components/Icon.astro';
-import ProjectVisual from '../../components/ProjectVisual.astro';
-import { projects } from '../../data/site';
-import type { Project } from '../../data/site';
-export function getStaticPaths() { return projects.map(project => ({params:{id:project.id},props:{project}})); }
-interface Props { project: Project }
-const { project: p } = Astro.props;
-const entry = (await getCollection('cases')).find(c => c.data.project === p.id);
-const rendered = entry ? await render(entry) : null;
-const Content = rendered?.Content;
+import { getCollection, render } from 'astro:content'
+import { projects, type Project } from '@/data/site'
+
+import PageLayout from '@/layouts/CommonPage.astro'
+import MediumZoom from '@/components/MediumZoom.astro'
+
+export function getStaticPaths() {
+  return projects.map((project) => ({ params: { id: project.id }, props: { project } }))
+}
+interface Props {
+  project: Project
+}
+const { project } = Astro.props
+const entry = (await getCollection('cases')).find((item) => item.data.project === project.id)
+const rendered = entry ? await render(entry) : null
+const Content = rendered?.Content
+const headings = rendered?.headings ?? [
+  { depth: 2, slug: 'focus', text: '关注什么' },
+  { depth: 2, slug: 'scope', text: '实现范围' }
+]
 ---
-<Base title={p.name} active="projects" description={p.description}>
-  <a class="back-link" href="/projects/">← 全部项目</a>
-  <header class="page-heading" style="margin-top:26px" data-reveal><span class="eyebrow">{p.group} / {p.status}</span><h1>{p.name}</h1><p>{p.description}</p><div class="project-actions"><a class="button primary" href={p.url} target="_blank" rel="noopener noreferrer"><Icon name="github"/>查看源码 <Icon name="external"/></a>{p.id==='Legion' && <a class="button secondary" href={`${p.url}/releases/latest`} target="_blank" rel="noopener noreferrer">下载安装包 <Icon name="external"/></a>}</div></header>
-  <div class="project-hero" data-reveal><ProjectVisual id={p.id}/></div>
-  <div class="project-detail-grid"><article class="prose">{Content ? <Content/> : <><h2>关注什么</h2><p>{p.focus}</p><h2>实现范围</h2><p>{p.boundary}</p><h2>进一步了解</h2><p>安装、使用方式与验证记录见 <a href={`${p.url}#readme`} target="_blank" rel="noopener noreferrer">项目 README</a>。</p></>}{p.id==='Learn-Agent' && <img src="/assets/learn-agent.webp" width="1200" height="760" alt="Learn-Agent 胶囊知识点和折叠知识卡的实际界面" loading="lazy"/>}</article><aside class="project-facts"><h2>项目档案</h2><dl><dt>技术</dt><dd>{p.tech}</dd><dt>当前状态</dt><dd>{p.status}</dd><dt>资料核对</dt><dd>2026.10.01</dd></dl><p>{p.boundary}</p><a class="subtle-link" href={`${p.url}#readme`} target="_blank" rel="noopener noreferrer">阅读原始说明 <Icon name="external"/></a></aside></div>
-</Base>
+
+<PageLayout title={project.name} {headings} back='/projects/'>
+  <p>{project.description}</p>
+  <p class='text-sm'>{project.status}<br />{project.tech}</p>
+  <p>
+    <a href={project.url} target='_blank' rel='noopener noreferrer'>GitHub 源码 ↗</a>{
+      project.id === 'Legion' && (
+        <>
+          {' '}
+          ·{' '}
+          <a href={`${project.url}/releases/latest`} target='_blank' rel='noopener noreferrer'>
+            下载安装包 ↗
+          </a>
+        </>
+      )
+    }
+  </p>
+  {
+    Content ? (
+      <Content />
+    ) : (
+      <>
+        <>
+          <h2 id='focus'>关注什么</h2>
+          <p>{project.focus}</p>
+          <h2 id='scope'>实现范围</h2>
+          <p>{project.boundary}</p>
+        </>
+      </>
+    )
+  }
+  {
+    project.id === 'Learn-Agent' && (
+      <img
+        class='zoomable'
+        src='/assets/learn-agent.webp'
+        width='1200'
+        height='760'
+        alt='Learn-Agent 的实际知识卡界面'
+        loading='lazy'
+      />
+    )
+  }
+  <p>
+    <a href={`${project.url}#readme`} target='_blank' rel='noopener noreferrer'
+      >阅读项目 README ↗</a>
+  </p>
+</PageLayout>
+<MediumZoom />

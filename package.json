@@ -1,1 +1,48 @@
-{"name":"zaixi-blog","private":true,"type":"module","version":"3.0.0","scripts":{"dev":"astro dev --host 127.0.0.1 --port 4173","start":"npm run dev","build":"astro build","preview":"astro preview --host 127.0.0.1 --port 4173","check":"astro check","verify":"node scripts/verify-output.mjs","publish:files":"node scripts/sync-publish.mjs"},"devDependencies":{"@astrojs/check":"^0.9.10","astro":"7.3.5","typescript":"^5.9.3"}}
+{
+  "name": "zaixi-blog",
+  "private": true,
+  "type": "module",
+  "version": "4.0.0",
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1 --port 4173",
+    "start": "npm run dev",
+    "build": "astro build",
+    "preview": "astro preview --host 127.0.0.1 --port 4173",
+    "check": "astro-pure check && astro check",
+    "verify": "node scripts/verify-output.mjs",
+    "format": "prettier --write src astro.config.ts uno.config.ts",
+    "publish:files": "node scripts/sync-publish.mjs"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/markdown-remark": "^7.3.1",
+    "@astrojs/react": "^7.0.0",
+    "@astrojs/rss": "^4.0.11",
+    "@unocss/astro": "^66.10.5",
+    "astro": "^7.3.5",
+    "astro-pure": "^1.4.9",
+    "katex": "^0.16.22",
+    "medium-zoom": "^1.1.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "rehype": "^13.0.2",
+    "rehype-katex": "^7.0.1",
+    "remark-cjk-friendly": "^2.3.1",
+    "remark-math": "^6.0.0",
+    "sharp": "^0.35.5"
+  },
+  "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "prettier": "^3.5.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "astro-pure": {
+      "astro": "$astro",
+      "@astrojs/mdx": "8.0.2"
+    }
+  }
+}

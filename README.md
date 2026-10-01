@@ -1,14 +1,14 @@
-# Home · Zaixi
+# Zaixi Personal Blog
 
 李在希的个人博客与 Agent Harness 工程作品集。**All in on AI Agents.**
 
 网站：https://lizaixi01.github.io/ 。发布仓库：https://github.com/lizaixi01/lizaixi01.github.io 。
 
-参考 joyehuang/blog 的技术博客与交互思路，重新设计全部页面和动效。采用黑白／冷蓝配色、桌面侧边导航、移动端底部导航、图形化项目封面与独立阅读布局。静态 HTML 页面、独立 Markdown 文章、类型明确的项目配置和共享组件。
+直接采用 [joyehuang/blog](https://github.com/joyehuang/blog) 开源模板（来源提交 `17e0eda5d7befe82682072ba5e3b18991e80bc45`）。保留模板的 Pure 主题、顶部导航、居中头像、分栏首页、文章卡片、阅读目录、深浅主题、粒子入场和交互终端，替换为李在希的个人资料、7 个公开项目和 4 篇原有文章。此前的网站设计已被取代。
 
 ## 本地开发
 
-Node.js 22.12+：先运行 npm ci，再运行 npm start，打开 http://127.0.0.1:4173/ 。
+使用 Node.js 22.12+（当前已在 Node.js 24 验证）：先运行 `npm ci`，再运行 `npm start`，打开 http://127.0.0.1:4173/ 。
 
 生产检查：npm run check、npm run build、npm run verify。npm run preview 预览生产产物。
 
@@ -18,14 +18,18 @@ Node.js 22.12+：先运行 npm ci，再运行 npm start，打开 http://127.0.0.
 - src/data/projects.json：精选公开项目，PiLoop 保持第一位。
 - src/content/articles/*.md：正式文章与修订日期。
 - src/content/cases/*.md：项目设计记录。
-- src/components、src/layouts、src/styles：组件、页面框架、主题。
+- src/site.config.ts：模板配置、导航与集成开关。
+- src/components、src/layouts、src/assets/styles：模板组件、页面框架和主题。
+- uno.config.ts：模板的 UnoCSS 样式配置。
 - public/assets：用户照片、微信二维码和本地优化图片。
 
 文章与项目详情在构建时生成。搜索索引、RSS、sitemap 都是本地静态文件；页面不在访问时调用 GitHub API，也不加载外部字体、分析或评论脚本。原始文章、引用、Learn-Agent 设计记录保留，旧 #/home、#/post/... 等分享地址转到新路径。
 
-全站隐藏文档滚动条，保留滚轮、触控和键盘滚动。深色模式保留原 loop-theme 偏好。邮箱是可选择纯文本，另提供复制按钮；微信在联系弹窗展示。
+主题读取模板的 theme 偏好，并兼容此前 loop-theme 的深浅设置。邮箱是可选择纯文本，另提供复制按钮；微信在联系页的模板二维码卡片展示。
 
-快捷终端通过顶部按钮或反引号打开，支持 help、ls、open、whoami、search、contact、theme 和 clear，仅用于本站导航，不执行操作系统命令。搜索支持 Ctrl/Cmd K、上下方向键与 Enter。滚动入场、卡片交互和页面切换均尊重减少动态效果设置；禁用 JavaScript 后文章仍可阅读。
+模板终端通过首页窗口、顶部按钮或反引号打开，支持 help、ls、cat、open、whoami、search、connect、mail、theme、clear 和 exit；使用静态生成的站内内容，不执行操作系统命令。Ctrl/Cmd K 打开独立搜索页。减少动态效果设置有对应适配；禁用 JavaScript 后文章仍可阅读。
+
+采用 Astro 7、Pure 1.4 与 React 19，并为 Pure 对旧 Astro 配置字段的读取保留一个兼容适配。模板作者的文章、照片、联系人、统计服务、评论服务与私人角色包没有接入本站。
 
 ## 发布约定
 
@@ -37,4 +41,4 @@ Node.js 22.12+：先运行 npm ci，再运行 npm start，打开 http://127.0.0.
 
 项目能力介绍依据公开 README。私人项目未发布，fork 不作为原创作品；本站改版未重新执行被展示项目的模型实验。Pages 发布成功不代表大陆各网络均已验证可达。
 
-参考和授权见 NOTICE.md。
+模板归属、改动说明和内容授权范围见 `NOTICE.md`；模板 Apache-2.0 授权见 `LICENSE`。

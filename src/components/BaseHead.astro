@@ -1,0 +1,42 @@
+---
+import { site } from '@/data/site'
+
+import type { SiteMeta } from 'astro-pure/types'
+import config from '@/site-config'
+
+import JsonLd from './JsonLd.astro'
+
+type Props = SiteMeta & { noindex?: boolean }
+const { title, description = config.description, articleDate, noindex = false } = Astro.props
+const siteTitle = `${title} ${config.titleDelimiter} ${config.title}`
+const canonical = new URL(Astro.url.pathname, Astro.site)
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.name,
+  alternateName: site.englishName,
+  url: Astro.site?.href,
+  sameAs: [site.github],
+  affiliation: { '@type': 'CollegeOrUniversity', name: site.university }
+}
+---
+
+<meta charset='utf-8' />
+<meta content='width=device-width, initial-scale=1.0' name='viewport' />
+<title>{siteTitle}</title>
+<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+<link rel='preload' href='/fonts/Satoshi-Variable.ttf' as='font' type='font/ttf' crossorigin />
+<link rel='canonical' href={canonical} />
+<link rel='alternate' type='application/rss+xml' title='Zaixi 的文章' href='/rss.xml' />
+<meta content={description} name='description' />
+<meta content={site.name} name='author' />
+<meta content={noindex ? 'noindex, follow' : 'index, follow'} name='robots' />
+<meta content='#FCFCFD' name='theme-color' />
+<meta content={articleDate ? 'article' : 'website'} property='og:type' />
+<meta content={title} property='og:title' />
+<meta content={description} property='og:description' />
+<meta content={canonical} property='og:url' />
+<meta content={config.title} property='og:site_name' />
+<meta content='zh_CN' property='og:locale' />
+<meta content={new URL('/assets/zaixi.jpg', Astro.site)} property='og:image' />
+<JsonLd schema={person} />

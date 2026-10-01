@@ -1,0 +1,54 @@
+---
+import { site } from '@/data/site'
+
+import PageLayout from '@/layouts/CommonPage.astro'
+
+const headings = [
+  { depth: 2, slug: 'about-me', text: 'About Me' },
+  { depth: 2, slug: 'education', text: 'Education' },
+  { depth: 2, slug: 'building', text: 'What I’m Building' },
+  { depth: 2, slug: 'internship', text: 'Internship' },
+  { depth: 2, slug: 'about-blog', text: 'About Blog' }
+]
+---
+
+<PageLayout title='About' {headings}>
+  <img
+    src='/assets/avatar.webp'
+    width='112'
+    height='112'
+    alt='Zaixi 的旅行照片'
+    class='rounded-full'
+  />
+  <h2 id='about-me'>About Me</h2>
+  <p>你好，我是 {site.name}（{site.englishName}），全网昵称 {site.nickname}。</p>
+  <p><strong>{site.description}</strong></p><p>{site.introduction}</p>
+  <h2 id='education'>Education</h2>
+  <p>
+    {site.university} · {site.major} · 本科在读<br />预计毕业：{site.graduation}<br />目前在{
+      site.location
+    }。
+  </p>
+  <h2 id='building'>What I’m Building</h2>
+  <p>
+    Learn-Agent 来自我的编程学习需求，让即时问答在后台沉淀为可追溯的知识卡。PiLoop
+    探索主动执行与分范围偏好记忆，Legion 探索多个 Agent 的分工、独立验收与可恢复执行。
+  </p>
+  <p>
+    我希望工具能承担可以自动完成的额外工作，也希望每次交付都有可检查的依据。项目是把这些判断变成能运行、能修改、能验证的过程。
+  </p>
+  <p><a href='/projects/'>查看全部项目 →</a></p>
+  <h2 id='internship'>Internship</h2>
+  <p>
+    寻找 Agent Harness 工程师实习，希望参与 Agent
+    执行流程、上下文管理与评估相关工作。可长期实习、随时到岗，接受异地线下。
+  </p>
+  <p>{site.cities.join(' / ')}</p><p><a href='/contact/'>与我联系 →</a></p>
+  <h2 id='about-blog'>About Blog</h2>
+  <p>这里记录个人项目与学习中关于 Agent 的问题、判断和待验证的假设。</p>
+  <p>
+    使用 <a href='https://github.com/joyehuang/blog' target='_blank' rel='noopener noreferrer'
+      >joyehuang/blog</a
+    > 开源模板，基于 Astro 与 Astro Theme Pure，部署目标为 GitHub Pages。
+  </p>
+</PageLayout>

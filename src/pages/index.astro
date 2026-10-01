@@ -1,15 +1,131 @@
 ---
-import { getCollection } from 'astro:content';
-import Base from '../layouts/Base.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import ArticleRow from '../components/ArticleRow.astro';
-import Icon from '../components/Icon.astro';
-import { site, projects } from '../data/site';
-const articles = (await getCollection('articles')).sort((a,b) => a.data.order-b.data.order);
+import { Image } from 'astro:assets'
+import { getCollection } from 'astro:content'
+import { projects, site } from '@/data/site'
+
+import { PostPreview } from 'astro-pure/components/pages'
+import { Button, Card, Icon, Label } from 'astro-pure/user'
+import PageLayout from '@/layouts/BaseLayout.astro'
+import LinkCard from '@/components/home/LinkCard.astro'
+import Section from '@/components/home/Section.astro'
+import SkillLayout from '@/components/home/SkillLayout.astro'
+import LegacyIntroOverlay from '@/components/intro/LegacyIntroOverlay.astro'
+import Terminal from '@/components/terminal/Terminal.astro'
+import avatar from '@/assets/avatar.webp'
+
+const posts = (await getCollection('blog')).sort((a, b) => a.data.order - b.data.order)
 ---
-<Base description="Zaixi Li，电子科技大学在读，寻找 Agent Harness 工程师实习。公开项目、工程思考与联系方式。">
-  <section class="hero" aria-label="个人介绍"><div class="hero-top" data-reveal><span class="eyebrow"><span class="status-dot"/>开放实习机会</span><span class="hero-coordinate"><Icon name="pin"/>成都，中国</span></div><div class="hero-identity" data-reveal><div><div class="hero-name-line"><h1>Zaixi<span>.</span></h1><span>李在希 / Zaixi Li</span></div><p class="hero-tagline">All in on <span>AI Agents.</span></p></div><div class="avatar-frame"><img src="/assets/avatar.webp" width="176" height="176" alt="Zaixi 在雪山前的旅行照片" fetchpriority="high"/><span class="avatar-label">Zaixi / 成都</span></div></div><p class="hero-description" data-reveal>{site.introduction}</p><div class="hero-actions" data-reveal><button class="button primary" data-contact>与我联系 <Icon name="arrow"/></button><a class="button secondary" href={site.github} target="_blank" rel="noopener noreferrer"><Icon name="github"/>GitHub <Icon name="external"/></a><span class="hero-availability">Agent Harness 工程师实习<br/><small>可长期实习 · 随时到岗</small></span></div><button class="terminal-launch" data-terminal data-reveal><span><Icon name="terminal"/><code>zaixi@home <b>~ $</b></code><span class="launch-text">输入 help，换一种方式探索</span></span><kbd>`</kbd></button></section>
-  <section class="home-block" aria-labelledby="work-title"><div class="block-heading" data-reveal><div><span class="eyebrow">01 / 精选实践</span><h2 id="work-title">正在构建</h2></div><a class="subtle-link" href="/projects/">全部项目 <span>{projects.length}</span><Icon name="arrow"/></a></div><div class="work-grid">{projects.slice(0,2).map((p,index) => <ProjectCard project={p} compact index={index}/>)}</div></section>
-  <section class="home-block" aria-labelledby="writing-title"><div class="block-heading" data-reveal><div><span class="eyebrow">02 / 工程思考</span><h2 id="writing-title">写下来，想清楚</h2></div><a class="subtle-link" href="/articles/">全部文章 <Icon name="arrow"/></a></div><div class="essay-list">{articles.map((article,index) => <ArticleRow article={article} index={index}/>)}</div></section>
-  <section class="home-contact" data-reveal><span class="eyebrow">下一段旅程</span><div><h2>期待在真实团队里，<br/>继续把想法做成工具。</h2><button class="round-action" data-contact aria-label="联系 Zaixi"><Icon name="arrow"/></button></div><p>{site.cities.join(' / ')} · 接受异地线下实习</p></section>
-</Base>
+
+<PageLayout meta={{ title: 'Home', description: site.introduction }} highlightColor='#659EB9'>
+  <LegacyIntroOverlay />
+  <main id='main' class='flex w-full flex-col items-center'>
+    <section
+      class='animate mb-10 flex flex-col items-center gap-y-7 relative z-50'
+      id='content-header'
+    >
+      <div class='relative'>
+        <Image
+          src={avatar}
+          alt='Zaixi 在雪山前的旅行照片'
+          class='h-28 w-28 object-cover rounded-full border p-1'
+          loading='eager'
+          fetchpriority='high'
+        />
+      </div>
+      <div class='flex flex-col items-center gap-y-4'>
+        <h1 class='text-3xl font-bold'>{site.nickname}</h1>
+        <div class='flex flex-wrap justify-center gap-x-7 gap-y-3'>
+          <Label title='成都，中国'><Icon name='location' class='size-5' slot='icon' /></Label>
+          <Label title='GitHub' as='a' href={site.github} target='_blank' rel='noopener noreferrer'
+            ><Icon name='github' class='size-5' slot='icon' /></Label
+          >
+        </div>
+      </div>
+      <a
+        href='/contact/'
+        class='flex flex-row items-center gap-x-3 rounded-full border bg-background px-4 py-2 text-sm shadow-sm transition-shadow hover:shadow-md'
+      >
+        <span class='relative flex items-center justify-center'
+          ><span class='size-2 rounded-full bg-primary'></span></span
+        >
+        <p class='font-medium text-muted-foreground'>Connect Me!</p>
+      </a>
+    </section>
+    <div
+      id='content'
+      class='animate relative z-0 flex w-full min-w-0 max-w-full flex-col gap-y-10 md:w-4/5 lg:w-5/6'
+    >
+      <div class='-mt-2'><Terminal /></div>
+      <Section title='About'>
+        <p class='text-muted-foreground'>{site.name} · {site.description}</p>
+        <p class='text-muted-foreground'>{site.introduction}</p>
+        <Button title='More about me' class='w-fit self-end' href='/about/' variant='ahead' />
+      </Section>
+      <Section title='Blog'>
+        <ul class='flex flex-col gap-y-1.5 sm:gap-y-2'>
+          {posts.map((post) => <PostPreview {post} />)}
+        </ul>
+        <Button title='More blogs' class='w-fit self-end' href='/blog/' variant='ahead' />
+      </Section>
+      <Section title='Open Source'>
+        {
+          projects
+            .slice(0, 3)
+            .map((project) => (
+              <LinkCard
+                heading={project.name}
+                subheading={project.description}
+                date={project.tech}
+                href={`/projects/${project.id}/`}
+                target='_self'
+              />
+            ))
+        }
+        <Button title='More projects' class='w-fit self-end' href='/projects/' variant='ahead' />
+      </Section>
+      <Section title='Education'>
+        <Card
+          as='div'
+          heading={site.university}
+          subheading={`本科 · ${site.major}`}
+          date={`预计毕业：${site.graduation}`}
+        />
+      </Section>
+      <Section title='Skills'>
+        <SkillLayout title='Languages' skills={['TypeScript', 'JavaScript', 'Python', 'Verilog']} />
+        <SkillLayout
+          title='Engineering'
+          skills={['Node.js', 'Electron', 'FastAPI', 'VS Code', 'Git']}
+        />
+        <SkillLayout
+          title='AI & Agent'
+          skills={['Agent Harness', 'Multi-Agent', 'Context', 'Memory', 'Verification']}
+        />
+      </Section>
+      <Section title='Contact'>
+        <p class='text-muted-foreground'>
+          寻找 Agent Harness 工程师实习。可长期实习、随时到岗，接受异地线下。
+        </p>
+        <p class='text-muted-foreground'>{site.cities.join(' / ')}</p>
+        <Button title='Let’s connect' class='w-fit self-end' href='/contact/' variant='ahead' />
+      </Section>
+      <Section title='站点统计'>
+        <div class='grid grid-cols-2 gap-3'>
+          {
+            [
+              { label: '文章', value: posts.length },
+              { label: '项目', value: projects.length }
+            ].map((item) => (
+              <div class='rounded-xl border bg-muted/30 px-4 py-3 text-center'>
+                <>
+                  <div class='text-2xl font-medium tabular-nums'>{item.value}</div>
+                  <div class='mt-1 text-xs text-muted-foreground'>{item.label}</div>
+                </>
+              </div>
+            ))
+          }
+        </div>
+      </Section>
+    </div>
+  </main>
+</PageLayout>

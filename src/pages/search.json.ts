@@ -1,11 +1,32 @@
-import { getCollection } from 'astro:content';
-import { projects } from '../data/site';
+import { getCollection } from 'astro:content'
+import { projects } from '@/data/site'
+import type { SearchResult } from '@/lib/search'
+
 export async function GET() {
-  const articles = await getCollection('articles');
-  const cases = await getCollection('cases');
-  const data = [
-    ...articles.map(a => ({title:a.data.title,description:a.data.description,text:a.body,type:'文章',url:`/articles/${a.id}/`})),
-    ...projects.map(p => ({title:p.name,description:p.description,text:`${p.focus} ${p.boundary} ${cases.find(c=>c.data.project===p.id)?.body || ''}`,type:'项目',url:`/projects/${p.id}/`})),
-  ];
-  return new Response(JSON.stringify(data),{headers:{'Content-Type':'application/json; charset=utf-8'}});
+  const posts = await getCollection('blog')
+  const results: SearchResult[] = [
+    ...posts.map((post) => ({
+      collection: 'blog' as const,
+      type: '文章' as const,
+      title: post.data.title,
+      description: post.data.description,
+      url: `/blog/${post.id}/`,
+      date: post.data.updated,
+      tags: post.data.tags,
+      excerpt: post.data.description,
+      text: post.body ?? ''
+    })),
+    ...projects.map((project) => ({
+      collection: 'project' as const,
+      type: '项目' as const,
+      title: project.name,
+      description: project.description,
+      url: `/projects/${project.id}/`,
+      date: project.updated,
+      tags: [project.group],
+      excerpt: project.description,
+      text: `${project.tech} ${project.focus} ${project.boundary}`
+    }))
+  ]
+  return new Response(JSON.stringify(results), { headers: { 'Content-Type': 'application/json' } })
 }

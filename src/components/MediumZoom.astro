@@ -1,0 +1,13 @@
+<script>
+  import mediumZoom from 'medium-zoom'
+
+  mediumZoom('.prose .zoomable', { background: 'hsl(var(--background) / .85)' })
+</script>
+<style is:global>
+  .medium-zoom-overlay {
+    z-index: 999;
+  }
+  .medium-zoom-image--opened {
+    z-index: 1000;
+  }
+</style>

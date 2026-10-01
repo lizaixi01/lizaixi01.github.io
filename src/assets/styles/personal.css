@@ -1,0 +1,52 @@
+/* Content/accessibility adaptations; colors and layout come from the template. */
+:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 4px;
+}
+.skip-link {
+  position: fixed;
+  top: -5rem;
+  left: 1rem;
+  z-index: 10000;
+  padding: 0.6rem 1rem;
+  background: hsl(var(--background));
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.5rem;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+.email-display {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  user-select: text;
+}
+.gmail-icon {
+  width: 1.3rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+.prose,
+.prose p,
+.prose li {
+  overflow-wrap: anywhere;
+}
+.prose table {
+  max-width: 100%;
+  overflow-x: auto;
+}
+header-component nav a[aria-current='page'] {
+  color: hsl(var(--primary));
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

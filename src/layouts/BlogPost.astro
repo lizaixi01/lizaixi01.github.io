@@ -1,0 +1,42 @@
+---
+import type { MarkdownHeading } from 'astro'
+import type { CollectionEntry } from 'astro:content'
+
+import 'katex/dist/katex.min.css'
+
+import { ArticleBottom, Hero } from 'astro-pure/components/pages'
+import PageLayout from '@/layouts/ContentLayout.astro'
+import Copyright from '@/components/blog-Copyright.astro'
+import MediumZoom from '@/components/MediumZoom.astro'
+import TableOfContents from '@/components/navigation/TableOfContents.astro'
+import { integ } from '@/site-config'
+
+interface Props {
+  post: CollectionEntry<'blog'>
+  posts: CollectionEntry<'blog'>[]
+  headings: MarkdownHeading[]
+  remarkPluginFrontmatter: Record<string, unknown>
+}
+const {
+  post: { id, data },
+  posts,
+  headings,
+  remarkPluginFrontmatter
+} = Astro.props
+const { description, title, updatedDate } = data
+---
+
+<PageLayout
+  meta={{ title, description, articleDate: updatedDate.toISOString() }}
+  highlightColor='#659EB9'
+  back='/blog/'
+>
+  {!!headings.length && <TableOfContents {headings} slot='sidebar' />}
+  <Hero {data} {remarkPluginFrontmatter} slot='header' />
+  <slot />
+  <Fragment slot='bottom'>
+    <Copyright {data} />
+    <ArticleBottom collections={posts} {id} class='mt-3 sm:mt-6' />
+  </Fragment>
+</PageLayout>
+{integ.mediumZoom.enable && <MediumZoom />}
