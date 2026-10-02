@@ -9,7 +9,6 @@ import PageLayout from '@/layouts/BaseLayout.astro'
 import LinkCard from '@/components/home/LinkCard.astro'
 import Section from '@/components/home/Section.astro'
 import SkillLayout from '@/components/home/SkillLayout.astro'
-import LegacyIntroOverlay from '@/components/intro/LegacyIntroOverlay.astro'
 import Terminal from '@/components/terminal/Terminal.astro'
 import avatar from '@/assets/avatar.webp'
 
@@ -17,7 +16,6 @@ const posts = (await getCollection('blog')).sort((a, b) => a.data.order - b.data
 ---
 
 <PageLayout meta={{ title: 'Home', description: site.introduction }} highlightColor='#659EB9'>
-  <LegacyIntroOverlay />
   <main id='main' class='flex w-full flex-col items-center'>
     <section
       class='animate mb-10 flex flex-col items-center gap-y-7 relative z-50'

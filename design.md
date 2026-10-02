@@ -23,15 +23,15 @@ Chinese text uses the operating system's available sans-serif font.
 
 ## Interactions
 
-The original particle introduction now spells ZAIXI. The original terminal
+The homepage opens directly without an introduction overlay or replay control. The original terminal
 and dev mode navigate this site's static content and do not execute shell commands.
 Search covers the author's articles and public projects. Theme choice persists
 in the browser. Contact uses the template's QR card and a plain, copyable email.
-Reduced-motion preferences disable transitions and skip the automatic introduction.
+Reduced-motion preferences disable transitions.
 
 ## Adaptation scope
 
-Personal information, photos, seven projects and four articles belong to Zaixi.
+Personal information, photos, seven projects and five articles belong to Zaixi.
 The source articles were preserved. The author's original updated dates supply
 the dates displayed by the template; publication dates are not separately recorded.
 The reference author's articles, contacts, external analytics and private
