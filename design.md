@@ -29,6 +29,12 @@ Search covers the author's articles and public projects. Theme choice persists
 in the browser. Contact uses the template's QR card and a plain, copyable email.
 Reduced-motion preferences disable transitions.
 
+Article footers include Waline comments, replies and likes. Visitors can comment
+with a nickname; email and account login are optional. The locally bundled widget
+loads near the footer, inherits the site's theme, and connects to a separate
+Vercel service backed by Neon. A single local thumbs-up icon represents article
+likes; its database slot remains reaction0.
+
 ## Adaptation scope
 
 Personal information, photos, seven projects and five articles belong to Zaixi.

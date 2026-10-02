@@ -43,6 +43,27 @@ const articleCount = fs
   .readdirSync('src/content/articles')
   .filter((file) => file.endsWith('.md')).length
 const projectCount = JSON.parse(fs.readFileSync('src/data/projects.json', 'utf8')).length
+const commentServer = (
+  process.env.PUBLIC_WALINE_SERVER_URL ||
+  JSON.parse(fs.readFileSync('src/data/waline.json', 'utf8')).serverURL
+)
+  .trim()
+  .replace(/\/+$/, '')
+for (const source of fs
+  .readdirSync('src/content/articles')
+  .filter((file) => file.endsWith('.md'))) {
+  const id = source.slice(0, -3)
+  const html = fs.readFileSync(path.join(root, 'blog', id, 'index.html'), 'utf8')
+  if (commentServer) {
+    if (!html.includes(`data-server-url="${commentServer}"`))
+      errors.push(`${id}: comment server missing`)
+    if (!html.includes(`data-article-path="/blog/${id}/"`))
+      errors.push(`${id}: unstable comment path`)
+    if (!html.includes('id="comments-title"')) errors.push(`${id}: comment section missing`)
+  } else if (html.includes('id="comments-title"'))
+    errors.push(`${id}: unconfigured comments visible`)
+}
+if (home.includes('data-server-url=')) errors.push('Comments must only load on article pages')
 if (search.filter((p) => p.type === '文章').length !== articleCount)
   errors.push('Article search index incomplete')
 if (new Set(search.map((p) => p.url)).size !== search.length) errors.push('Duplicate search URLs')

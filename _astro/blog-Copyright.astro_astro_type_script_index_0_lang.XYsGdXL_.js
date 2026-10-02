@@ -1,0 +1,1 @@
+import"./utils.DrOFW8l_.js";import{t as e}from"./toast.D_jT52AB.js";document.getElementById(`copy-link`)?.addEventListener(`click`,async()=>{try{await navigator.clipboard.writeText(window.location.href),e({message:`Link copied!`})}catch{e({message:`请复制浏览器地址栏中的链接`})}});

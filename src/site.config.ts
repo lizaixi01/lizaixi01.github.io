@@ -1,5 +1,6 @@
 import type { Config, IntegrationUserConfig, ThemeUserConfig } from 'astro-pure/types'
 
+import { comments } from './data/comments'
 import { site } from './data/site'
 
 export const theme: ThemeUserConfig = {
@@ -58,7 +59,7 @@ export const integ: IntegrationUserConfig = {
   quote: { server: '', target: '' },
   typography: { class: 'prose text-base text-muted-foreground' },
   mediumZoom: { enable: true, selector: '.prose .zoomable', options: { className: 'zoomable' } },
-  waline: { enable: false, server: '' }
+  waline: { enable: comments.enabled, server: comments.serverURL }
 }
 
 export default { ...theme, integ } as Config

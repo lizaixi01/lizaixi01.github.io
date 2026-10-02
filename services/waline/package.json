@@ -1,0 +1,14 @@
+{
+  "name": "zaixi-waline",
+  "private": true,
+  "version": "1.0.0",
+  "dependencies": {
+    "@waline/vercel": "1.43.4"
+  },
+  "overrides": {
+    "request": "npm:@cypress/request@4.0.1",
+    "protobufjs": "7.6.6",
+    "qs": "^6.16.0",
+    "axios": "0.34.0"
+  }
+}

@@ -1,0 +1,6 @@
+*
+!index.cjs
+!package.json
+!package-lock.json
+!vercel.json
+!robots.txt

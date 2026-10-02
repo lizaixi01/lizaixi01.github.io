@@ -1,0 +1,1 @@
+import{t as e}from"./_virtual_config.C_rLWGkG.js";new Intl.DateTimeFormat(e.locale.dateLocale,e.locale.dateOptions);

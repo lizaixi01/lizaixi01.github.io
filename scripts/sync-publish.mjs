@@ -53,9 +53,27 @@ if (repo !== path.resolve('.')) {
     'README.md',
     'NOTICE.md',
     'LICENSE',
-    '.gitignore'
+    '.gitignore',
+    '.env.example'
   ])
     fs.copyFileSync(file, path.join(repo, file))
+  // Copy the comment server's sources explicitly, never its local secrets or dependencies.
+  for (const file of [
+    'package.json',
+    'package-lock.json',
+    'index.cjs',
+    'vercel.json',
+    'robots.txt',
+    'waline.pgsql',
+    '.env.example',
+    '.vercelignore',
+    'LICENSE',
+    'README.md'
+  ]) {
+    const relative = path.join('services', 'waline', file)
+    fs.mkdirSync(path.dirname(path.join(repo, relative)), { recursive: true })
+    fs.copyFileSync(relative, path.join(repo, relative))
+  }
   const oldConfig = path.resolve(repo, 'astro.config.mjs')
   if (!oldConfig.startsWith(repo + path.sep)) throw new Error('Invalid legacy configuration path')
   if (fs.existsSync(oldConfig)) fs.rmSync(oldConfig)

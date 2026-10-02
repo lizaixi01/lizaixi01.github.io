@@ -5,3 +5,7 @@ node_modules/
 .astro/
 dist/
 .reference/
+.env
+.env.*
+!.env.example
+.vercel/

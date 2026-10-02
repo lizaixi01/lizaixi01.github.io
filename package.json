@@ -19,6 +19,7 @@
     "@astrojs/react": "^7.0.0",
     "@astrojs/rss": "^4.0.11",
     "@unocss/astro": "^66.10.5",
+    "@waline/client": "3.16.0",
     "astro": "^7.3.5",
     "astro-pure": "^1.4.9",
     "katex": "^0.16.22",

@@ -9,3 +9,5 @@ Modified for Zaixi on 2026-10-01: personal content and navigation; static conten
 Articles, personal photographs and project descriptions are Zaixi's site content. Links to other projects do not imply ownership of their code or character artwork. PiLoop uses Pi's runtime; Nailong character artwork is excluded from that project's MIT code license. See the linked repositories for their licenses.
 
 The Apache-2.0 template license does not grant rights to Zaixi's articles, personal photographs, QR code or referenced third-party artwork. Please credit the author and original source when quoting articles.
+
+Added on 2026-10-02: article comments, replies and likes using [Waline](https://github.com/walinejs/waline), with an independent Vercel service and Neon PostgreSQL storage. The Waline client is distributed under MIT; the server and copied SQL schema retain Waline's GPL-2.0 license. These dependencies keep their own licenses; the template's Apache-2.0 license does not replace them. The like icon is a local SVG added for this site. The homepage intro animation and replay controls have been removed.

@@ -1,0 +1,187 @@
+---
+import '@waline/client/style'
+
+import { comments } from '@/data/comments'
+
+interface Props {
+  path: string
+}
+const { path } = Astro.props
+---
+
+{
+  comments.enabled && (
+    <section
+      id='comments'
+      aria-labelledby='comments-title'
+      class='waline-section mt-10 border-t border-border pt-8'
+      data-server-url={comments.serverURL}
+      data-article-path={path}
+    >
+      <h2 id='comments-title' class='text-xl font-medium text-foreground'>
+        评论与点赞
+      </h2>
+      <p class='mt-2 mb-5 text-sm text-muted-foreground'>
+        欢迎交流。无需登录，填写昵称即可留言；邮箱选填。
+      </p>
+      <div class='waline-loading text-sm' role='status'>
+        正在加载评论…
+      </div>
+      <div id='waline' />
+      <div class='waline-error' hidden>
+        <p role='status'>评论暂时无法加载，请稍后重试。</p>
+        <button type='button' class='mt-3 rounded-lg border border-border px-4 py-2 text-sm'>
+          重新加载
+        </button>
+      </div>
+      <noscript>开启 JavaScript 后即可查看评论和点赞。</noscript>
+    </section>
+  )
+}
+
+<script>
+  const section = document.querySelector<HTMLElement>('.waline-section')
+  if (section) {
+    const serverURL = section.dataset.serverUrl!
+    const path = section.dataset.articlePath!
+    const loading = section.querySelector<HTMLElement>('.waline-loading')!
+    const error = section.querySelector<HTMLElement>('.waline-error')!
+    let pending = false
+    let mounted = false
+
+    async function loadComments() {
+      if (pending || mounted) return
+      pending = true
+      loading.hidden = false
+      error.hidden = true
+      try {
+        const endpoint = new URL(`${serverURL}/api/comment`)
+        endpoint.searchParams.set('path', path)
+        endpoint.searchParams.set('pageSize', '1')
+        const response = await fetch(endpoint, { signal: AbortSignal.timeout(20000) })
+        if (!response.ok) throw new Error('Comment service unavailable')
+        const result = await response.json()
+        if (result.errno !== 0) throw new Error('Comment service unavailable')
+        const { init } = await import('@waline/client')
+        const instance = init({
+          el: section!.querySelector<HTMLElement>('#waline'),
+          serverURL,
+          path,
+          lang: 'zh-CN',
+          dark: 'html.dark',
+          login: 'enable',
+          meta: ['nick', 'mail'],
+          requiredMeta: ['nick'],
+          reaction: ['/assets/reactions/like.svg'],
+          locale: {
+            placeholder: '留下你的想法，欢迎讨论与补充。',
+            reactionTitle: '喜欢这篇文章？',
+            reaction0: '点赞'
+          },
+          emoji: false,
+          imageUploader: false,
+          search: false,
+          pageview: false,
+          comment: false
+        })
+        if (!instance) throw new Error('Waline could not mount')
+        // Waline renders article reactions as clickable list items.
+        const reaction = section!.querySelector<HTMLElement>('.wl-reaction-item')
+        if (reaction) {
+          reaction.setAttribute('role', 'button')
+          reaction.tabIndex = 0
+          const announceReaction = () => {
+            const count = reaction.querySelector('.wl-reaction-votes')?.textContent || '0'
+            reaction.setAttribute('aria-label', `给这篇文章点赞，当前 ${count} 个赞`)
+            reaction.setAttribute('aria-pressed', String(reaction.classList.contains('active')))
+          }
+          announceReaction()
+          new MutationObserver(announceReaction).observe(reaction, {
+            attributes: true,
+            attributeFilter: ['class'],
+            childList: true,
+            subtree: true,
+            characterData: true
+          })
+          reaction.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault()
+              reaction.click()
+            }
+          })
+        }
+        mounted = true
+      } catch {
+        error.hidden = false
+      } finally {
+        pending = false
+        loading.hidden = true
+      }
+    }
+
+    error.querySelector('button')?.addEventListener('click', loadComments)
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((entry) => entry.isIntersecting)) {
+            observer.disconnect()
+            void loadComments()
+          }
+        },
+        { rootMargin: '600px' }
+      )
+      observer.observe(section)
+    } else {
+      void loadComments()
+    }
+  }
+</script>
+
+<style is:global>
+  .waline-section {
+    --waline-font-size: 0.95rem;
+    --waline-font-color: hsl(var(--foreground));
+    --waline-bg-color: hsl(var(--background));
+    --waline-bg-color-light: hsl(var(--muted));
+    --waline-bg-color-hover: hsl(var(--accent));
+    --waline-theme-color: #659eb9;
+    --waline-active-color: #4989a8;
+    --waline-color: hsl(var(--foreground));
+    --waline-border-color: hsl(var(--border));
+    --waline-info-color: hsl(var(--muted-foreground));
+    --waline-info-bg-color: hsl(var(--muted));
+    --waline-border-radius: 0.5rem;
+  }
+  .waline-section [hidden] {
+    display: none;
+  }
+  .waline-section .wl-reaction {
+    padding: 0 0 1.5rem;
+    text-align: left;
+  }
+  .waline-section .wl-reaction-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  .waline-section .wl-reaction-list {
+    justify-content: flex-start;
+  }
+  .waline-section .wl-reaction-img {
+    width: 2rem;
+    height: 2rem;
+  }
+  .waline-section .wl-header {
+    flex-wrap: wrap;
+  }
+  .waline-section .wl-header-item {
+    min-width: 0;
+  }
+  .waline-section .wl-content {
+    overflow-wrap: anywhere;
+  }
+  .waline-section .wl-btn:focus-visible,
+  .waline-section .wl-reaction-item:focus-visible {
+    outline: 2px solid var(--waline-theme-color);
+    outline-offset: 3px;
+  }
+</style>
