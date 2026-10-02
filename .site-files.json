@@ -32,6 +32,7 @@
   "favicon.svg",
   "fonts/Satoshi-Variable.ttf",
   "fonts/Satoshi-VariableItalic.ttf",
+  "icons/heart-item-active.svg",
   "icons/heart-item.svg",
   "index.html",
   "licenses/joye-blog-LICENSE.txt",
@@ -61,7 +62,7 @@
   "_astro/client.3K1Y63sR.css",
   "_astro/client.C0Kep7Mr.js",
   "_astro/client.DcI92wot.js",
-  "_astro/Comment.astro_astro_type_script_index_0_lang.CqpvDq4s.js",
+  "_astro/Comment.astro_astro_type_script_index_0_lang.DsHSBHCH.js",
   "_astro/Copyright.astro_astro_type_script_index_0_lang.Ddg9AZV6.js",
   "_astro/DevModeHost.CAWIX4z1.css",
   "_astro/DevModeHost.CDW8Tnt6.js",
@@ -147,6 +148,6 @@
   "_astro/ui-core.Dw1J3NSB.js",
   "_astro/utils.CfQ74LCd.js",
   "_astro/wechat.Cx21AEVd_Z3J5uK.webp",
-  "_astro/_..BcKnYIQ1.css",
+  "_astro/_..c5RfCw9U.css",
   "_astro/_virtual_config.B3eRFFre.js"
 ]

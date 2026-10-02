@@ -119,8 +119,12 @@ const lang = 'zh-CN'
           reaction.tabIndex = 0
           const announceReaction = () => {
             const count = reaction.querySelector('.wl-reaction-votes')?.textContent || '0'
+            const active = reaction.classList.contains('active')
             reaction.setAttribute('aria-label', `给这篇文章点赞，当前 ${count} 个赞`)
-            reaction.setAttribute('aria-pressed', String(reaction.classList.contains('active')))
+            reaction.setAttribute('aria-pressed', String(active))
+            const icon = reaction.querySelector<HTMLImageElement>('img')
+            const iconPath = active ? '/icons/heart-item-active.svg' : '/icons/heart-item.svg'
+            if (icon && icon.getAttribute('src') !== iconPath) icon.src = iconPath
           }
           announceReaction()
           this.reactionObserver = new MutationObserver(announceReaction)
@@ -237,5 +241,8 @@ const lang = 'zh-CN'
   }
   :global(.dark) #waline :global(.wl-reaction img) {
     filter: invert(75%);
+  }
+  #waline :global(.wl-reaction-item.active img) {
+    filter: none;
   }
 </style>

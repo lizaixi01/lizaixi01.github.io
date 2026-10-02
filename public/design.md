@@ -37,6 +37,9 @@ styles are copied from the template's `src/components/comment/Comment.astro`.
 Its centered outline heart (`public/icons/heart-item.svg`) and inline `Like(s)`
 count replace the previous custom thumbs-up presentation. The native Waline form
 includes nickname, optional email and website. Article likes still use reaction0.
+When the current visitor has liked an article, the outline heart changes to a
+solid red heart in either theme; removing the like restores the original outline.
+This state follows Waline's own active reaction, rather than the total like count.
 
 ## Adaptation scope
 
