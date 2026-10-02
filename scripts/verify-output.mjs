@@ -57,10 +57,11 @@ for (const source of fs
   if (commentServer) {
     if (!html.includes(`data-server-url="${commentServer}"`))
       errors.push(`${id}: comment server missing`)
-    if (!html.includes(`data-article-path="/blog/${id}/"`))
+    if (!html.includes(`data-path="/blog/${id}/"`))
       errors.push(`${id}: unstable comment path`)
-    if (!html.includes('id="comments-title"')) errors.push(`${id}: comment section missing`)
-  } else if (html.includes('id="comments-title"'))
+    if (!html.includes('<joye-comment') || !html.includes('id="waline"'))
+      errors.push(`${id}: template comment section missing`)
+  } else if (html.includes('<joye-comment'))
     errors.push(`${id}: unconfigured comments visible`)
 }
 if (home.includes('data-server-url=')) errors.push('Comments must only load on article pages')

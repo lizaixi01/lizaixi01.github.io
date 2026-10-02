@@ -45,6 +45,6 @@
 
 ## 评论与点赞
 
-采用 Waline + Vercel + Neon，每篇文章底部提供游客评论、回复、文章点赞和评论点赞，深浅主题跟随博客。昵称必填、邮箱选填、登录可选。点赞保存在数据库中，按文章固定路径隔离；未配置有效服务地址时隐藏评论区，不展示无法保存的按钮。
+采用 Waline + Vercel + Neon，每篇文章底部提供游客评论、回复、文章点赞和评论点赞，深浅主题跟随博客。直接复用 joyehuang/blog 的 Comment.astro 样式和 heart-item.svg：居中爱心、横排 Like(s) 计数及原生评论表单。昵称必填、邮箱与网址选填、登录可选。点赞保存在数据库中，按文章固定路径隔离；未配置有效服务地址时隐藏评论区，不展示无法保存的按钮。
 
 服务地址维护于 src/data/waline.json 的 serverURL；本地可用 .env.local 的 PUBLIC_WALINE_SERVER_URL 覆盖。该地址是公开信息，不能填写数据库连接字符串。部署和管理说明见 services/waline/README.md。

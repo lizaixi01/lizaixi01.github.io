@@ -59,7 +59,17 @@ export const integ: IntegrationUserConfig = {
   quote: { server: '', target: '' },
   typography: { class: 'prose text-base text-muted-foreground' },
   mediumZoom: { enable: true, selector: '.prose .zoomable', options: { className: 'zoomable' } },
-  waline: { enable: comments.enabled, server: comments.serverURL }
+  waline: {
+    enable: comments.enabled,
+    server: comments.serverURL,
+    additionalConfigs: {
+      pageview: false,
+      comment: false,
+      dark: 'html.dark',
+      login: 'enable',
+      requiredMeta: ['nick']
+    }
+  }
 }
 
 export default { ...theme, integ } as Config

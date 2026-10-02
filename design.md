@@ -32,8 +32,11 @@ Reduced-motion preferences disable transitions.
 Article footers include Waline comments, replies and likes. Visitors can comment
 with a nickname; email and account login are optional. The locally bundled widget
 loads near the footer, inherits the site's theme, and connects to a separate
-Vercel service backed by Neon. A single local thumbs-up icon represents article
-likes; its database slot remains reaction0.
+Vercel service backed by Neon. The comment component, theme variables and reaction
+styles are copied from the template's `src/components/comment/Comment.astro`.
+Its centered outline heart (`public/icons/heart-item.svg`) and inline `Like(s)`
+count replace the previous custom thumbs-up presentation. The native Waline form
+includes nickname, optional email and website. Article likes still use reaction0.
 
 ## Adaptation scope
 

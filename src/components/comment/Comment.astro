@@ -1,0 +1,241 @@
+---
+import config from 'virtual:config'
+
+import '@waline/client/style'
+
+import { cn } from 'astro-pure/utils'
+
+interface Props {
+  class?: string
+  path?: string
+}
+
+const { class: className, path } = Astro.props as Props
+
+const lang = 'zh-CN'
+---
+
+{
+  config.integ.waline.enable && (
+    <joye-comment
+      id='comments'
+      data-path={path ?? ''}
+      data-lang={lang}
+      data-server-url={config.integ.waline.server}
+    >
+      <div id='waline' class={cn('not-prose', className)}>
+        正在加载评论…
+      </div>
+    </joye-comment>
+  )
+}
+
+<script>
+  import type { WalineEmojiPresets, WalineInstance } from '@waline/client'
+  import config from 'virtual:config'
+
+  const walineConfig = config.integ.waline
+
+  class JoyeComment extends HTMLElement {
+    private instance: WalineInstance | null = null
+    private observer?: IntersectionObserver
+    private reactionObserver?: MutationObserver
+    private pending = false
+
+    connectedCallback() {
+      if (this.instance || this.pending || this.observer) return
+      const el = this.querySelector<HTMLElement>('#waline')!
+      if ('IntersectionObserver' in window) {
+        this.observer = new IntersectionObserver(
+          (entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+              this.observer?.disconnect()
+              this.observer = undefined
+              void this.mount()
+            }
+          },
+          { rootMargin: '600px' }
+        )
+        this.observer.observe(el)
+      } else {
+        void this.mount()
+      }
+    }
+
+    disconnectedCallback() {
+      this.observer?.disconnect()
+      this.observer = undefined
+      this.reactionObserver?.disconnect()
+      this.instance?.destroy()
+      this.instance = null
+    }
+
+    private async mount() {
+      if (this.pending || this.instance) return
+      this.pending = true
+      const el = this.querySelector<HTMLElement>('#waline')!
+      el.textContent = '正在加载评论…'
+
+      ;(globalThis as unknown as { __VUE_OPTIONS_API__: boolean }).__VUE_OPTIONS_API__ = true
+      ;(globalThis as unknown as { __VUE_PROD_DEVTOOLS__: boolean }).__VUE_PROD_DEVTOOLS__ = false
+      ;(
+        globalThis as unknown as { __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: boolean }
+      ).__VUE_PROD_HYDRATION_MISMATCH_DETAILS__ = false
+
+      const emoji = walineConfig.emoji?.map(
+        (preset) => `${config.npmCDN}/@waline/emojis@1.2.0/${preset}` as WalineEmojiPresets
+      )
+
+      const overridePath = this.dataset.path
+      const rawPath =
+        overridePath && overridePath.length > 0 ? overridePath : window.location.pathname
+      const path = rawPath
+
+      // Counter elements belong to ViewCounter — this only mounts the thread.
+      try {
+        const endpoint = new URL(`${walineConfig.server}/api/comment`)
+        endpoint.searchParams.set('path', path)
+        endpoint.searchParams.set('pageSize', '1')
+        const response = await fetch(endpoint, { signal: AbortSignal.timeout(20000) })
+        if (!response.ok || (await response.json()).errno !== 0)
+          throw new Error('Comment service unavailable')
+        const { init: walineInit } = await import('@waline/client')
+        if (!this.isConnected) return
+        this.instance = walineInit({
+          el,
+          serverURL: walineConfig.server || '',
+          path,
+          lang: this.dataset.lang,
+          emoji,
+          reaction: ['/icons/heart-item.svg'],
+          ...walineConfig.additionalConfigs
+        })
+        if (!this.instance) throw new Error('Waline could not mount')
+
+        // Keep the template's appearance while making its list-item button keyboard accessible.
+        const reaction = el.querySelector<HTMLElement>('.wl-reaction-item')
+        if (reaction) {
+          reaction.setAttribute('role', 'button')
+          reaction.tabIndex = 0
+          const announceReaction = () => {
+            const count = reaction.querySelector('.wl-reaction-votes')?.textContent || '0'
+            reaction.setAttribute('aria-label', `给这篇文章点赞，当前 ${count} 个赞`)
+            reaction.setAttribute('aria-pressed', String(reaction.classList.contains('active')))
+          }
+          announceReaction()
+          this.reactionObserver = new MutationObserver(announceReaction)
+          this.reactionObserver.observe(reaction, {
+            attributes: true,
+            attributeFilter: ['class'],
+            childList: true,
+            subtree: true,
+            characterData: true
+          })
+          reaction.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault()
+              reaction.click()
+            }
+          })
+        }
+      } catch {
+        if (!this.isConnected) return
+        el.textContent = '评论暂时无法加载。'
+        const retry = document.createElement('button')
+        retry.type = 'button'
+        retry.className = 'ml-2 underline underline-offset-4'
+        retry.textContent = '重新加载'
+        retry.addEventListener('click', () => void this.mount())
+        el.append(retry)
+      } finally {
+        this.pending = false
+      }
+    }
+  }
+
+  if (walineConfig.enable && !customElements.get('joye-comment')) {
+    customElements.define('joye-comment', JoyeComment)
+  }
+</script>
+
+<style>
+  /* Basic theme */
+  #waline {
+    --waline-font-size: 16px;
+    --waline-white: hsl(var(--background) / var(--un-bg-opacity, 1));
+    --waline-light-grey: #999;
+    --waline-dark-grey: #666;
+    --waline-theme-color: hsl(var(--foreground) / var(--un-text-opacity, 1));
+    --waline-active-color: hsl(var(--primary) / var(--un-text-opacity, 1));
+    --waline-color: hsl(var(--muted-foreground) / var(--un-text-opacity, 1));
+    --waline-bg-color: hsl(var(--muted) / var(--un-bg-opacity, 1));
+    --waline-bg-color-light: hsl(var(--input) / var(--un-text-opacity, 1));
+    --waline-bg-color-hover: #f0f0f0;
+    --waline-border-color: hsl(var(--border) / var(--un-border-opacity, 1));
+    --waline-disable-bg-color: #f8f8f8;
+    --waline-disable-color: #bbb;
+    --waline-code-bg-color: #282c34;
+    --waline-bq-color: #f0f0f0;
+    --waline-avatar-size: 3.25rem;
+    --waline-m-avatar-size: calc(var(--waline-avatar-size) * 9 / 13);
+    --waline-badge-color: hsl(var(--border) / var(--un-border-opacity, 1));
+    --waline-badge-font-size: 0.775em;
+    --waline-info-bg-color: var(--waline-bg-color-light);
+    --waline-info-color: var(--waline-color);
+    --waline-info-font-size: 0.625em;
+    --waline-border: 1px solid var(--waline-border-color);
+    --waline-avatar-radius: 50%;
+    --waline-box-shadow: none;
+  }
+
+  #waline :global(.wl-reaction-title, .wl-reaction-text) {
+    display: none;
+  }
+  #waline :global(.wl-reaction) {
+    overflow: visible;
+    margin-bottom: 0.5em;
+  }
+  #waline :global(.wl-reaction-img) {
+    width: auto;
+    display: flex;
+    height: 35px;
+    align-items: center;
+    column-gap: 0.4rem;
+  }
+  #waline :global(.wl-reaction-votes) {
+    position: inherit;
+    top: inherit;
+    min-width: inherit;
+    inset-inline-end: inherit;
+    display: flex;
+    font-weight: normal;
+    border: none;
+    background: none;
+    color: inherit;
+    padding: 0.2rem 0.4rem;
+    border-radius: 6px;
+  }
+  #waline :global(.wl-reaction-loading) {
+    position: inherit;
+    top: inherit;
+    min-width: inherit;
+  }
+  #waline :global(.wl-reaction-item.active .wl-reaction-votes) {
+    background: var(--waline-theme-color);
+    color: var(--waline-bg-color);
+  }
+
+  #waline :global(.wl-reaction-votes:after) {
+    margin-left: 0.25em;
+    content: 'Like(s)';
+    display: inline-block;
+    clear: both;
+    border: 0;
+  }
+  #waline :global(.wl-reaction img) {
+    filter: invert(25%);
+  }
+  :global(.dark) #waline :global(.wl-reaction img) {
+    filter: invert(75%);
+  }
+</style>

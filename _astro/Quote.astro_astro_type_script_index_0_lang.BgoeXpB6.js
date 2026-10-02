@@ -1,0 +1,1 @@
+import{t as e}from"./_virtual_config.B3eRFFre.js";var{quote:t}=e.integ,n=class extends HTMLElement{render(e){let t=this.querySelector(`#quote-sentence`);t&&(t.innerText=e)}connectedCallback(){let e=Function(`data`,`return (${t.target})(data)`);fetch(t.server).then(e=>e.json()).then(t=>this.render(e(t)))}};customElements.define(`quote-component`,n);
