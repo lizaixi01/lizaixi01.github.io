@@ -1,1 +1,0 @@
-import"./utils.BZ7ZnnlQ.js";import{t as e}from"./toast.D_jT52AB.js";document.getElementById(`copy-link`)?.addEventListener(`click`,()=>{navigator.clipboard.writeText(window.location.href),e({message:`Link copied!`})});var t=document.getElementById(`get-qrcode`),n=document.getElementById(`qrcode-container`);t?.addEventListener(`click`,()=>n?.classList.toggle(`expanded`));

@@ -37,7 +37,7 @@ for (const file of htmlFiles) {
 }
 const home = fs.readFileSync(path.join(root, 'index.html'), 'utf8')
 if (!home.includes('PiLoop') || !home.includes('Legion')) errors.push('Featured projects missing')
-if (home.indexOf('PiLoop') > home.indexOf('Legion')) errors.push('PiLoop must remain first')
+if (home.indexOf('Legion') > home.indexOf('PiLoop')) errors.push('Legion must remain first')
 const search = JSON.parse(fs.readFileSync(path.join(root, 'search.json'), 'utf8'))
 const articleCount = fs
   .readdirSync('src/content/articles')

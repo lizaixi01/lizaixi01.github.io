@@ -1,6 +1,6 @@
 # Zaixi Personal Blog
 
-李在希的个人博客与 Agent Harness 工程作品集。**All in on AI Agents.**
+李在希的个人博客与 Agent Harness 工程作品集。**AI Agent & Full-Stack Developer**
 
 网站：https://lizaixi01.github.io/ 。发布仓库：https://github.com/lizaixi01/lizaixi01.github.io 。
 
@@ -15,7 +15,7 @@
 ## 内容维护
 
 - src/data/site.ts：个人资料与品牌文案。
-- src/data/projects.json：精选公开项目，PiLoop 保持第一位。
+- src/data/projects.json：精选公开项目，Legion 保持第一位。
 - src/content/articles/*.md：正式文章与修订日期。
 - src/content/cases/*.md：项目设计记录。
 - src/site.config.ts：模板配置、导航与集成开关。

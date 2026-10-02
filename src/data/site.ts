@@ -18,9 +18,8 @@ export const site = {
   name: '李在希',
   englishName: 'Zaixi Li',
   nickname: 'Zaixi',
-  description: 'All in on AI Agents.',
-  introduction:
-    '电子科技大学在读，关注 Agent 的执行流程、上下文管理与可验证交付。通过真实使用中的问题，练习把模型能力变成可靠、顺手的产品。',
+  description: 'AI Agent & Full-Stack Developer',
+  introduction: '电子科技大学在读，正在开发一款Multi-Agent',
   email: 'lizaixi@gmail.com',
   github: 'https://github.com/lizaixi01',
   university: '电子科技大学',

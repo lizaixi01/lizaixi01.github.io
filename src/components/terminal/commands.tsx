@@ -82,7 +82,7 @@ export const commands: CommandRegistry = {
         {
           kind: 'text',
           tone: 'muted',
-          text: '  ↳ All in on AI Agents.'
+          text: `  ↳ ${site.description}`
         },
         { kind: 'spacer' },
         { kind: 'text', tone: 'muted', text: 'next: try `ls`, `cat about`, or `cd /blog`' }
