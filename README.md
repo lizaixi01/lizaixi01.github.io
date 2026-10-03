@@ -4,7 +4,7 @@
 
 网站：https://lizaixi01.github.io/ 。发布仓库：https://github.com/lizaixi01/lizaixi01.github.io 。
 
-直接采用 [joyehuang/blog](https://github.com/joyehuang/blog) 开源模板（来源提交 `17e0eda5d7befe82682072ba5e3b18991e80bc45`）。保留模板的 Pure 主题、顶部导航、居中头像、分栏首页、文章卡片、阅读目录、深浅主题和交互终端，替换为李在希的个人资料、7 个公开项目和 5 篇文章。首页直接显示内容，开屏动画与重播按钮已移除。此前的网站设计已被取代。
+直接采用 [joyehuang/blog](https://github.com/joyehuang/blog) 开源模板（来源提交 `17e0eda5d7befe82682072ba5e3b18991e80bc45`）。保留模板的 Pure 主题、顶部导航、居中头像、分栏首页、文章卡片、阅读目录、深浅主题和交互终端，替换为李在希的个人资料、7 个公开项目和 6 篇文章。首页直接显示内容，开屏动画与重播按钮已移除。此前的网站设计已被取代。
 
 ## 本地开发
 
