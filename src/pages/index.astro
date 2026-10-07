@@ -57,6 +57,7 @@ const posts = (await getCollection('blog')).sort((a, b) => a.data.order - b.data
       <Section title='About'>
         <p class='text-muted-foreground'>{site.name} · {site.description}</p>
         <p class='text-muted-foreground'>{site.introduction}</p>
+        <p class='text-muted-foreground' lang='en'>{site.englishIntroduction}</p>
         <Button title='More about me' class='w-fit self-end' href='/about/' variant='ahead' />
       </Section>
       <Section title='Blog'>
