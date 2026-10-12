@@ -69,6 +69,11 @@ OpenAI 的内部研究提供了一个现实参照：过去六个月，在成功�
 
 投入的差距已经出现在个人付费者中。a16z 的同一份报告显示，截至 2026 年 8 月，观测到的 AI 付费者里，**支出最高的前 1% 每月平均花费 903 美元，而付费者整体的月支出中位数是 25 美元。** 前 10% 贡献约一半的观测支出；前 1% 占 19.5%，甚至超过后 50% 合计的 16.6%。这是美国个人消费卡样本中的支出分布，不能直接换算成生产率差距，也不能当成 AI 公司的全部收入。[5](https://a16z.com/100-gen-ai-apps-7/)
 
+<figure>
+  <img src="/assets/articles/how-to-build-ai-products/consumer-ai-spending.png" alt="a16z 原图：2025 年 1 月至 2026 年 8 月，不同支出群体的 AI 消费增长；最高前 1% 群体的月均支出由 504 美元增加至 903 美元。" width="2000" height="1493" loading="lazy" decoding="async" class="zoomable">
+  <figcaption>美国个人消费卡样本中，不同支出群体的 AI 消费变化，2025 年 1 月至 2026 年 8 月。来源：<a href="https://a16z.com/100-gen-ai-apps-7/">a16z / YipitData</a>，保留原图。</figcaption>
+</figure>
+
 这些高支出用户更倾向于购买编程、生产力和创意工具，包括自动化、产品构建和内容创作工具。[5](https://a16z.com/100-gen-ai-apps-7/) 至少可以看到，一部分人已经把 AI 当作持续投入的生产资源。我的判断是，分界不仅在于有没有用过 AI，还在于能否围绕真实任务持续投入资源，并把投入变成可交付的成果。
 
 OpenAI 披露，2026 年 8 月中旬，内部研究人员的 Agent 用量中位数，按 API 标价折算，每天已超过 600 美元。[3](https://openai.com/index/research-acceleration-view-inside-openai/)
