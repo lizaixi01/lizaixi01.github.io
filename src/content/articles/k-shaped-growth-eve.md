@@ -26,6 +26,8 @@ order: -1
 
 有人偶尔打开豆包问几个问题、改一段文字，有人已经让 Agent 接入代码库和工程软件，持续推进项目。两个人都叫 AI 用户，获得的能力却可能完全不同。模型能力、使用方式和投入资源，共同影响结果。
 
+a16z 合伙人 Olivia Moore 的报告提供了一个消费端的参照：接近一半的美国消费者报告使用 AI，约四分之一每天使用。但在 YipitData 的美国电子收据样本中，截至 2026 年 8 月，只有 4.5% 的合格消费者拥有 ChatGPT、Gemini 或 Claude 中至少一款的有效付费个人订阅，一年前为 2.1%。使用正在普及，持续付费仍集中在较小的人群中。[5](https://a16z.com/100-gen-ai-apps-7/)
+
 企业里的分化已经有了数据。OpenAI 的报告显示，按每活跃用户输出 token 计算，使用量前 10% 的企业与中间水平企业之间的差距，从 2026 年 1 月的 2.6 倍扩大到了 6 月的 8.3 倍。这是用量差距，不能直接当成生产率差距，但技术普及与使用深度分化，确实可以同时发生。[2](https://openai.com/index/how-enterprises-put-ai-to-work/)
 
 <figure>
@@ -64,6 +66,10 @@ OpenAI 的内部研究提供了一个现实参照：过去六个月，在成功�
 新人类之间，同样存在差距。
 
 一个人使用能力较弱、速度较慢的模型，需要节省每次调用；另一个人能够使用前沿模型，拥有充足的 token 和算力，可以同时推进多条路线，持续运行 Agent。两个人即使同样努力，能够调动的能力也不相同。
+
+投入的差距已经出现在个人付费者中。a16z 的同一份报告显示，截至 2026 年 8 月，观测到的 AI 付费者里，**支出最高的前 1% 每月平均花费 903 美元，而付费者整体的月支出中位数是 25 美元。** 前 10% 贡献约一半的观测支出；前 1% 占 19.5%，甚至超过后 50% 合计的 16.6%。这是美国个人消费卡样本中的支出分布，不能直接换算成生产率差距，也不能当成 AI 公司的全部收入。[5](https://a16z.com/100-gen-ai-apps-7/)
+
+这些高支出用户更倾向于购买编程、生产力和创意工具，包括自动化、产品构建和内容创作工具。[5](https://a16z.com/100-gen-ai-apps-7/) 至少可以看到，一部分人已经把 AI 当作持续投入的生产资源。我的判断是，分界不仅在于有没有用过 AI，还在于能否围绕真实任务持续投入资源，并把投入变成可交付的成果。
 
 OpenAI 披露，2026 年 8 月中旬，内部研究人员的 Agent 用量中位数，按 API 标价折算，每天已超过 600 美元。[3](https://openai.com/index/research-acceleration-view-inside-openai/)
 
@@ -115,7 +121,8 @@ Anthropic 对美国经济的“显著变化”情景推演显示：到 2030 年�
 2. [OpenAI How enterprises put AI to work](https://openai.com/index/how-enterprises-put-ai-to-work/)，2026年8月12日。企业每月按每活跃用户输出token分组，前10%与第45—55百分位企业比较；用量指标不等同生产率。
 3. [OpenAI Research acceleration The view inside OpenAI](https://openai.com/index/research-acceleration-view-inside-openai/)，2026年9月6日。4—8小时是估计的人类任务时间，统计限成功完成且结果可确定的任务；人工介入并不证明技术上无法自动化。600美元为2026年8月中旬内部研究人员Agent用量中位数按API标价折算。
 4. [Anthropic Economic Scenarios for Transformative AI 技术报告](https://www-cdn.anthropic.com/files/4zrzovbb/website/cf58f84d46a4a76bf5a5b039ac695fba6b80041c.pdf)，2026年，表3。GDP和认知职业工资均相对2030年初同年无AI基准；情景没有被赋予发生概率，不能直接预测中国就业。另见[情景说明](https://www.anthropic.com/institute/econ-scenarios)。
+5. [Olivia Moore / a16z The Top 100 Gen AI Consumer Apps — 7th Edition](https://a16z.com/100-gen-ai-apps-7/)，2026年10月5日，尤其是“AI spending follows a power law”部分。4.5%为2026年8月美国电子收据样本中至少订阅ChatGPT、Gemini或Claude之一的个人付费比例；903美元为支出最高的前1%付费者月均个人消费卡支出，25美元为付费者整体的月支出中位数。支出分布来自YipitData美国样本，不代表所有用户或公司总收入。
 
-资料核对截至2026年10月3日。三个行业共识是文章采用的趋势前提；“新人类／旧人类”“AI斩杀线”是作者的分析比喻。百倍、千倍产出差距为特定任务潜力的判断，并非上述研究已验证的普遍增效倍数。
+原稿资料核对截至2026年10月3日；a16z消费支出数据于2026年10月12日补充核对。三个行业共识是文章采用的趋势前提；“新人类／旧人类”“AI斩杀线”是作者的分析比喻。百倍、千倍产出差距为特定任务潜力的判断，并非上述研究已验证的普遍增效倍数。
 
 以上内容由 GPT 6 Pro 生成。
