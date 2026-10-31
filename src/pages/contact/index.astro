@@ -13,12 +13,13 @@ const headings = [
 ---
 
 <PageLayout title='Contact' {headings}>
-  <p>欢迎聊聊 Agent、正在做的项目，或下一段实习机会。</p>
+  <p>欢迎聊聊 Agent、CAD 工具、教学项目与合作。</p>
   <h2 id='how-to-reach'>How to Reach Me</h2>
   <div class='not-prose my-4 flex flex-wrap items-center gap-4'>
     <Gmail /><button
       class='rounded-full border px-3 py-1.5 text-sm hover:bg-muted'
-      data-copy={site.email}>复制邮箱</button>
+      data-copy={site.email}>复制邮箱</button
+    >
   </div>
   <p><a href={site.github} target='_blank' rel='noopener noreferrer'>GitHub · lizaixi01 ↗</a></p>
   <p>把鼠标移到卡片上，或轻点卡片，查看微信二维码。</p>
@@ -35,6 +36,5 @@ const headings = [
     ]}
   />
   <h2 id='internship'>Internship</h2>
-  <p>寻找 Agent Harness 工程师实习。可长期实习、随时到岗，接受异地线下。</p>
-  <p>{site.cities.join(' / ')}</p>
+  <p><strong>{site.internship.company}</strong> · {site.internship.role}</p>
 </PageLayout>

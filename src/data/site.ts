@@ -30,5 +30,6 @@ export const site = {
   major: '电子信息科学与技术',
   graduation: '2029 年秋季',
   location: '成都',
+  internship: { company: '华西数医', role: 'Intern' },
   cities: ['北京', '上海', '杭州', '深圳', '成都']
 }

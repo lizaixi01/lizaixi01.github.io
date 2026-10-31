@@ -17,10 +17,11 @@
     "name": "Mini-Agent",
     "url": "https://github.com/lizaixi01/Mini-Agent",
     "tech": "Python · Agent Loop · DeepSeek",
-    "status": "六课教学实现 · 本地 CLI",
+    "status": "v0.1.0 · 六课教学 CLI",
     "description": "从 Agent 循环到工具调用、会话、权限、Memory 与 Skills，用六课 Python 代码搭建教学 Agent。",
     "focus": "渐进实现 · 固定剧本演示 · 可选真实模型",
     "boundary": "教学实现，终端命令在本机用户权限下运行；上下文压缩、子 Agent 和后台任务仍在计划中。",
+    "downloadUrl": "https://github.com/lizaixi01/Mini-Agent/releases/latest",
     "group": "工程项目",
     "updated": "2026-11-01"
   },

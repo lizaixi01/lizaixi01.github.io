@@ -104,9 +104,9 @@ const posts = (await getCollection('blog')).sort((a, b) => a.data.order - b.data
       </Section>
       <Section title='Contact'>
         <p class='text-muted-foreground'>
-          寻找 Agent Harness 工程师实习。可长期实习、随时到岗，接受异地线下。
+          {site.internship.company} · {site.internship.role}
         </p>
-        <p class='text-muted-foreground'>{site.cities.join(' / ')}</p>
+        <p class='text-muted-foreground'>欢迎交流 Agent、CAD 工具与项目合作。</p>
         <Button title='Let’s connect' class='w-fit self-end' href='/contact/' variant='ahead' />
       </Section>
       <Section title='站点统计'>

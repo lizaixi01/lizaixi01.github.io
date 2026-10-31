@@ -10,7 +10,7 @@ export const ABOUT_TEXT = [
   site.introduction,
   site.university + ' · ' + site.major,
   '预计毕业：' + site.graduation,
-  '寻找 Agent Harness 工程师实习',
+  `${site.internship.company} · ${site.internship.role}`,
   site.email
 ].join('\n')
 export const NOW_TEXT = `${featuredProjects.map((project) => project.name).join(' · ')}\n任务协作、CAD 运行时与 Agent 教学实践。`

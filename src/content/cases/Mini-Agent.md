@@ -16,10 +16,24 @@ Mini-Agent 把 Agent 的基础机制拆成六课：Agent 循环、工具调用�
 
 会话、Memory 和 Skills 分别负责当前任务记录、跨会话信息与按需读取的说明。课程将这些机制逐步加入，避免一开始就把全部功能放进同一个复杂框架。
 
+## 下载与版本
+
+首个发布版本为 **v0.1.0 教学源码版**。下载源码 ZIP 并完整解压，进入 `Mini-Agent-v0.1.0` 文件夹。需要 Python 3.10 或更高版本，运行以下命令即可体验无需密钥的固定剧本：
+
+```sh
+python agent.py --demo
+```
+
+压缩包包含 Python 实现、六课正文、示例技能、测试与许可证。
+
+- [下载 v0.1.0 源码包](https://github.com/lizaixi01/Mini-Agent/releases/download/v0.1.0/mini-agent-v0.1.0-source.zip)
+- [最新版本、说明与文件校验值](https://github.com/lizaixi01/Mini-Agent/releases/latest)
+- [全部历史版本](https://github.com/lizaixi01/Mini-Agent/releases)
+
 ## 当前实现范围
 
 上下文压缩、子 Agent、后台任务、Goal 和定时任务仍列在后续计划中。权限确认也不构成系统沙箱：批准的终端命令使用当前本机用户权限。
 
 课程可以作为动手起点，进一步的可靠性、隔离和长期运行需要另外设计与验证。本次博客更新未运行真实模型调用。
 
-- [核对时的项目 README 与六课入口](https://github.com/lizaixi01/Mini-Agent/blob/db5a4eed392821030f9b8096265276f1afed2006/README.md)
+- [发布版本的项目 README 与六课入口](https://github.com/lizaixi01/Mini-Agent/blob/221827fd2524d3574bdfb7dcbb888464d75ad95d/README.md)

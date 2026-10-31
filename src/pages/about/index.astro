@@ -5,9 +5,11 @@ import PageLayout from '@/layouts/CommonPage.astro'
 
 const headings = [
   { depth: 2, slug: 'about-me', text: 'About Me' },
-  { depth: 2, slug: 'education', text: 'Education' },
   { depth: 2, slug: 'building', text: 'What I’m Building' },
+  { depth: 3, slug: 'agentcad', text: 'AgentCAD' },
+  { depth: 3, slug: 'mini-agent', text: 'Mini-Agent' },
   { depth: 2, slug: 'internship', text: 'Internship' },
+  { depth: 2, slug: 'education', text: 'Education' },
   { depth: 2, slug: 'about-blog', text: 'About Blog' }
 ]
 ---
@@ -25,35 +27,44 @@ const headings = [
   <p><strong>{site.description}</strong></p>
   <p>{site.introduction}</p>
   <p lang='en'>{site.englishIntroduction}</p>
+  <h2 id='building'>What I’m Building</h2>
+  <h3 id='agentcad'>AgentCAD · 面向 Agent 的 CAD 运行时</h3>
+  <p>
+    我在开发 <a href='/projects/AgentCAD/'>AgentCAD</a>，让 Agent
+    通过工具完成二维工程图和参数化三维零件的创建、修改、校验与导出。每次变更保留检查点、差异和历史记录，能够检查结果，也能够撤销修改。
+  </p>
+  <p>
+    这个项目关注怎样把工程软件接进 Agent
+    的工作流：从明确的操作接口，到独立校验、可恢复执行和实时查看，让交付有可复查的依据。
+  </p>
+  <p><a href='/projects/AgentCAD/'>了解 AgentCAD →</a></p>
+  <h3 id='mini-agent'>Mini-Agent · 从零动手搭建 Agent</h3>
+  <p>
+    <a href='/projects/Mini-Agent/'>Mini-Agent</a> 是一个可以阅读、运行和逐步修改的 Python 教学项目，用六课代码拆解
+    Agent 循环、工具调用、会话与事件、权限、Memory 和 Skills。
+  </p>
+  <p>
+    不用密钥也能运行固定剧本演示，观察这些机制怎样连接；需要真实模型时，再接入自己的 DeepSeek
+    配置。我希望读者不只会使用 Agent，也能理解它怎样执行任务，并亲手搭出一个最小实现。
+  </p>
+  <p>
+    <a href='/projects/Mini-Agent/'>了解 Mini-Agent →</a>{' '}·{' '}
+    <a
+      href='https://github.com/lizaixi01/Mini-Agent/releases/latest'
+      target='_blank'
+      rel='noopener noreferrer'>下载与版本 ↗</a
+    >
+  </p>
+  <p><a href='/projects/'>查看全部项目 →</a></p>
+  <h2 id='internship'>Internship</h2>
+  <p><strong>{site.internship.company}</strong> · {site.internship.role}</p>
+  <p><a href='/contact/'>与我联系 →</a></p>
   <h2 id='education'>Education</h2>
   <p>
     {site.university} · {site.major} · 本科在读<br />预计毕业：{site.graduation}<br />目前在{
       site.location
     }。
   </p>
-  <h2 id='building'>What I’m Building</h2>
-  <p>
-    我在开发 <a href='/projects/AgentCAD/'>AgentCAD</a>，让 Agent 创建、修改与校验工程图和三维零件；<a
-      href='/projects/Legion/'>Legion</a
-    >
-    探索多个 Worker 的任务委派、持续执行与证据验收。
-  </p>
-  <p>
-    <a href='/projects/Mini-Agent/'>Mini-Agent</a> 用六课 Python 代码解释 Agent 的基本机制；
-    <a href='/projects/agent-spire/'>Agent 尖塔</a> 和
-    <a href='/projects/Agent-Game/'>归途灯塔</a> 则把工程知识变成卡牌挑战和交互实验。
-  </p>
-  <p>
-    PiLoop 和 Learn-Agent
-    继续围绕主动执行、偏好记忆与学习记录展开。我希望工具能承担可以自动完成的额外工作，也希望每次交付都有可检查的依据。
-  </p>
-  <p><a href='/projects/'>查看全部项目 →</a></p>
-  <h2 id='internship'>Internship</h2>
-  <p>
-    寻找 Agent Harness 工程师实习，希望参与 Agent
-    执行流程、上下文管理与评估相关工作。可长期实习、随时到岗，接受异地线下。
-  </p>
-  <p>{site.cities.join(' / ')}</p><p><a href='/contact/'>与我联系 →</a></p>
   <h2 id='about-blog'>About Blog</h2>
   <p>这里记录个人项目与学习中关于 Agent 的问题、判断和待验证的假设。</p>
   <p>

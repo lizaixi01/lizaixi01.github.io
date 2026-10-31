@@ -78,7 +78,11 @@ export const commands: CommandRegistry = {
           tone: 'muted',
           text: '  ↳ 电子科技大学 · 电子信息科学与技术 · 2029 年秋季预计毕业'
         },
-        { kind: 'text', tone: 'muted', text: '  ↳ 成都 · 寻找 Agent Harness 工程师实习' },
+        {
+          kind: 'text',
+          tone: 'muted',
+          text: `  ↳ ${site.location} · ${site.internship.company} · ${site.internship.role}`
+        },
         {
           kind: 'text',
           tone: 'muted',
