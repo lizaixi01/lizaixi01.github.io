@@ -37,7 +37,8 @@ for (const file of htmlFiles) {
 }
 const home = fs.readFileSync(path.join(root, 'index.html'), 'utf8')
 const projectData = JSON.parse(fs.readFileSync('src/data/projects.json', 'utf8'))
-if (projectData[0]?.id !== 'Legion') errors.push('Legion must remain first')
+if (projectData[0]?.id !== 'AgentCAD' || projectData[1]?.id !== 'Mini-Agent')
+  errors.push('AgentCAD and Mini-Agent must be the first two projects')
 let lastFeaturedPosition = -1
 for (const project of projectData.slice(0, 3)) {
   const position = home.indexOf(`href="/projects/${project.id}/"`)

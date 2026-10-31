@@ -15,7 +15,7 @@
 ## 内容维护
 
 - src/data/site.ts：个人资料与品牌文案。
-- src/data/projects.json：公开项目、当前实现范围与可选体验／下载入口；Legion 保持第一位，首页与终端共用前三个精选项目。
+- src/data/projects.json：公开项目、当前实现范围与可选体验／下载入口；AgentCAD、Mini-Agent 优先展示，首页与终端共用前三个精选项目。
 - src/data/provenance.json：公开仓库来源、核对日期与提交快照；项目 updated 对应默认分支最近提交的北京时间日期。
 - src/content/articles/*.md：正式文章与修订日期。
 - src/content/cases/*.md：项目设计记录。

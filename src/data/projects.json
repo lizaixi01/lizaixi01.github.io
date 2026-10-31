@@ -1,18 +1,5 @@
 [
   {
-    "id": "Legion",
-    "name": "Legion",
-    "url": "https://github.com/lizaixi01/Legion",
-    "tech": "TypeScript · Electron · Codex",
-    "status": "Windows 桌面应用 · 源码持续迭代",
-    "description": "围绕目标委派多个 Worker，并发推进任务，用检查与证据决定继续、修复或交付。",
-    "focus": "任务委派 · 并发队列 · 持续目标 · 工程任务恢复",
-    "boundary": "通用功能认证目前限内置数值验证器；其他任务需独立测试，十倍人效与多日可靠性尚未验证。",
-    "downloadUrl": "https://github.com/lizaixi01/Legion/releases",
-    "group": "工程项目",
-    "updated": "2026-10-07"
-  },
-  {
     "id": "AgentCAD",
     "name": "AgentCAD",
     "url": "https://github.com/lizaixi01/AgentCAD",
@@ -36,6 +23,19 @@
     "boundary": "教学实现，终端命令在本机用户权限下运行；上下文压缩、子 Agent 和后台任务仍在计划中。",
     "group": "工程项目",
     "updated": "2026-11-01"
+  },
+  {
+    "id": "Legion",
+    "name": "Legion",
+    "url": "https://github.com/lizaixi01/Legion",
+    "tech": "TypeScript · Electron · Codex",
+    "status": "Windows 桌面应用 · 源码持续迭代",
+    "description": "围绕目标委派多个 Worker，并发推进任务，用检查与证据决定继续、修复或交付。",
+    "focus": "任务委派 · 并发队列 · 持续目标 · 工程任务恢复",
+    "boundary": "通用功能认证目前限内置数值验证器；其他任务需独立测试，十倍人效与多日可靠性尚未验证。",
+    "downloadUrl": "https://github.com/lizaixi01/Legion/releases",
+    "group": "工程项目",
+    "updated": "2026-10-07"
   },
   {
     "id": "PiLoop",
