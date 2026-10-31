@@ -4,6 +4,8 @@ export interface Project {
   id: string
   name: string
   url: string
+  demoUrl?: string
+  downloadUrl?: string
   tech: string
   status: string
   description: string
@@ -13,6 +15,7 @@ export interface Project {
   updated: string
 }
 export const projects: Project[] = projectData
+export const featuredProjects = projects.slice(0, 3)
 export const site = {
   title: 'Zaixi Personal Blog',
   name: '李在希',

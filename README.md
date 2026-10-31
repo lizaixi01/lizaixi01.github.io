@@ -4,7 +4,7 @@
 
 网站：https://lizaixi01.github.io/ 。发布仓库：https://github.com/lizaixi01/lizaixi01.github.io 。
 
-直接采用 [joyehuang/blog](https://github.com/joyehuang/blog) 开源模板（来源提交 `17e0eda5d7befe82682072ba5e3b18991e80bc45`）。保留模板的 Pure 主题、顶部导航、居中头像、分栏首页、文章卡片、阅读目录、深浅主题和交互终端，替换为李在希的个人资料、7 个公开项目和 7 篇文章。首页直接显示内容，开屏动画与重播按钮已移除。此前的网站设计已被取代。
+直接采用 [joyehuang/blog](https://github.com/joyehuang/blog) 开源模板（来源提交 `17e0eda5d7befe82682072ba5e3b18991e80bc45`）。保留模板的 Pure 主题、顶部导航、居中头像、分栏首页、文章卡片、阅读目录、深浅主题和交互终端，替换为李在希的个人资料、14 个公开项目和 7 篇文章。首页直接显示内容，开屏动画与重播按钮已移除。此前的网站设计已被取代。
 
 ## 本地开发
 
@@ -15,7 +15,8 @@
 ## 内容维护
 
 - src/data/site.ts：个人资料与品牌文案。
-- src/data/projects.json：精选公开项目，Legion 保持第一位。
+- src/data/projects.json：公开项目、当前实现范围与可选体验／下载入口；Legion 保持第一位，首页与终端共用前三个精选项目。
+- src/data/provenance.json：公开仓库来源、核对日期与提交快照；项目 updated 对应默认分支最近提交的北京时间日期。
 - src/content/articles/*.md：正式文章与修订日期。
 - src/content/cases/*.md：项目设计记录。
 - src/site.config.ts：模板配置、导航与集成开关。

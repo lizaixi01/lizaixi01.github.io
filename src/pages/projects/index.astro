@@ -1,4 +1,5 @@
 ---
+import provenance from '@/data/provenance.json'
 import { projects, site } from '@/data/site'
 
 import PageLayout from '@/layouts/CommonPage.astro'
@@ -17,14 +18,17 @@ const list = (group: string) =>
       description: project.description,
       links: [
         { type: 'doc', href: `/projects/${project.id}/` },
-        { type: 'github', href: project.url }
+        { type: 'github', href: project.url },
+        ...(project.demoUrl ? [{ type: 'site', href: project.demoUrl }] : []),
+        ...(project.downloadUrl ? [{ type: 'release', href: project.downloadUrl }] : [])
       ]
     }))
 ---
 
 <PageLayout title='Projects' {headings}>
-  <p>我的公开项目，围绕 Agent 的执行、记忆、协作和验证展开。</p>
+  <p>我的公开项目，围绕 Agent 工程、CAD 工具和交互式学习展开，也保留早期游戏与视觉原型。</p>
   <p><a href={site.github} target='_blank' rel='noopener noreferrer'>GitHub · lizaixi01 ↗</a></p>
+  <p class='text-sm'>已收录 {projects.length} 个公开项目 · 资料核对：{provenance.reviewed}</p>
   <h2 id='open-source'>Open Source</h2>
   <ProjectSection project={list('工程项目')} />
   <h2 id='experiments'>Experiments</h2>

@@ -1,35 +1,77 @@
 {
-  "reviewed": "2026-10-01",
+  "reviewed": "2026-11-01",
   "reference": "https://github.com/joyehuang/blog",
   "referenceCommit": "17e0eda5d7befe82682072ba5e3b18991e80bc45",
   "sources": [
     {
-      "project": "PiLoop",
-      "url": "https://github.com/lizaixi01/PiLoop/blob/main/README.md"
+      "project": "Legion",
+      "url": "https://github.com/lizaixi01/Legion/blob/7bde2e6fc517332e2efb1d4c27f4060986ec7a73/README.md",
+      "commit": "7bde2e6fc517332e2efb1d4c27f4060986ec7a73"
     },
     {
-      "project": "Legion",
-      "url": "https://github.com/lizaixi01/Legion/blob/main/README.md"
+      "project": "AgentCAD",
+      "url": "https://github.com/lizaixi01/AgentCAD/blob/fa04950630481b43d984b833405faf83013bc9d9/README.md",
+      "commit": "fa04950630481b43d984b833405faf83013bc9d9"
+    },
+    {
+      "project": "Mini-Agent",
+      "url": "https://github.com/lizaixi01/Mini-Agent/blob/db5a4eed392821030f9b8096265276f1afed2006/README.md",
+      "commit": "db5a4eed392821030f9b8096265276f1afed2006"
+    },
+    {
+      "project": "PiLoop",
+      "url": "https://github.com/lizaixi01/PiLoop/blob/e15e534e1bb809abf365a9e18ccf16099c5f8c65/README.md",
+      "commit": "e15e534e1bb809abf365a9e18ccf16099c5f8c65"
     },
     {
       "project": "Learn-Agent",
-      "url": "https://github.com/lizaixi01/Learn-Agent/blob/main/README.md"
+      "url": "https://github.com/lizaixi01/Learn-Agent/blob/5e88fb512c92aff86d319e268bf2a3ba071f7b61/README.md",
+      "commit": "5e88fb512c92aff86d319e268bf2a3ba071f7b61"
     },
     {
       "project": "opencode-lite",
-      "url": "https://github.com/lizaixi01/opencode-lite/blob/main/README.md"
+      "url": "https://github.com/lizaixi01/opencode-lite/blob/f6bff3ce5a9cfd17afc6ed89a6cc63c73ead072b/README.md",
+      "commit": "f6bff3ce5a9cfd17afc6ed89a6cc63c73ead072b"
     },
     {
       "project": "verilog-verification-agent",
-      "url": "https://github.com/lizaixi01/verilog-verification-agent/blob/main/README.md"
+      "url": "https://github.com/lizaixi01/verilog-verification-agent/blob/3d4fd27f30a3c0b3007a57d3bbd05cbc8061f8f0/README.md",
+      "commit": "3d4fd27f30a3c0b3007a57d3bbd05cbc8061f8f0"
     },
     {
       "project": "frameops",
-      "url": "https://github.com/lizaixi01/frameops/blob/main/README.md"
+      "url": "https://github.com/lizaixi01/frameops/blob/5890fdbbc6a37c8840665ad0ba8909a18ad5910d/README.md",
+      "commit": "5890fdbbc6a37c8840665ad0ba8909a18ad5910d"
+    },
+    {
+      "project": "agent-spire",
+      "url": "https://github.com/lizaixi01/agent-spire/blob/9eb0dab2c484539542782451f78d40dcfc3e0d82/README.md",
+      "commit": "9eb0dab2c484539542782451f78d40dcfc3e0d82"
+    },
+    {
+      "project": "Agent-Game",
+      "url": "https://github.com/lizaixi01/Agent-Game/blob/9fcfcc76fc10497eb199f52a71876748dac37799/README.md",
+      "commit": "9fcfcc76fc10497eb199f52a71876748dac37799"
     },
     {
       "project": "nailong-codex-pet",
-      "url": "https://github.com/lizaixi01/nailong-codex-pet/blob/main/README.md"
+      "url": "https://github.com/lizaixi01/nailong-codex-pet/blob/65e1a1dba3fe74ef2b8e42258211f748017f1caa/README.md",
+      "commit": "65e1a1dba3fe74ef2b8e42258211f748017f1caa"
+    },
+    {
+      "project": "PenguinMayhem-Releases",
+      "url": "https://github.com/lizaixi01/PenguinMayhem-Releases/blob/3fb87f70aa959166c7a72a6bee37fd7752edeb93/README.md",
+      "commit": "3fb87f70aa959166c7a72a6bee37fd7752edeb93"
+    },
+    {
+      "project": "basketball-shot-diagnosis",
+      "url": "https://github.com/lizaixi01/basketball-shot-diagnosis/blob/ac40d3a1b370a107751464af221a0542ec7b8c0a/README.md",
+      "commit": "ac40d3a1b370a107751464af221a0542ec7b8c0a"
+    },
+    {
+      "project": "cs61a-hog",
+      "url": "https://github.com/lizaixi01/cs61a-hog/blob/b4c8acd5312ed5dcb3b5019ead0abbaea287f69d/README.md",
+      "commit": "b4c8acd5312ed5dcb3b5019ead0abbaea287f69d"
     }
   ]
 }

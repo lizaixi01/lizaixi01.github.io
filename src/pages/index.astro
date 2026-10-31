@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets'
 import { getCollection } from 'astro:content'
-import { projects, site } from '@/data/site'
+import { featuredProjects, projects, site } from '@/data/site'
 
 import { PostPreview } from 'astro-pure/components/pages'
 import { Button, Card, Icon, Label } from 'astro-pure/user'
@@ -68,17 +68,15 @@ const posts = (await getCollection('blog')).sort((a, b) => a.data.order - b.data
       </Section>
       <Section title='Open Source'>
         {
-          projects
-            .slice(0, 3)
-            .map((project) => (
-              <LinkCard
-                heading={project.name}
-                subheading={project.description}
-                date={project.tech}
-                href={`/projects/${project.id}/`}
-                target='_self'
-              />
-            ))
+          featuredProjects.map((project) => (
+            <LinkCard
+              heading={project.name}
+              subheading={project.description}
+              date={project.tech}
+              href={`/projects/${project.id}/`}
+              target='_self'
+            />
+          ))
         }
         <Button title='More projects' class='w-fit self-end' href='/projects/' variant='ahead' />
       </Section>
@@ -91,14 +89,17 @@ const posts = (await getCollection('blog')).sort((a, b) => a.data.order - b.data
         />
       </Section>
       <Section title='Skills'>
-        <SkillLayout title='Languages' skills={['TypeScript', 'JavaScript', 'Python', 'Verilog']} />
+        <SkillLayout
+          title='Languages'
+          skills={['TypeScript', 'JavaScript', 'Python', 'C++', 'Verilog']}
+        />
         <SkillLayout
           title='Engineering'
-          skills={['Node.js', 'Electron', 'FastAPI', 'VS Code', 'Git']}
+          skills={['Node.js', 'Electron', 'FastAPI', 'FreeCAD', 'Unreal Engine', 'VS Code', 'Git']}
         />
         <SkillLayout
           title='AI & Agent'
-          skills={['Agent Harness', 'Multi-Agent', 'Context', 'Memory', 'Verification']}
+          skills={['Agent Harness', 'Multi-Agent', 'MCP', 'Context', 'Memory', 'Verification']}
         />
       </Section>
       <Section title='Contact'>

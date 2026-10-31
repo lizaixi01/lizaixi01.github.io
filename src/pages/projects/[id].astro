@@ -25,13 +25,23 @@ const headings = rendered?.headings ?? [
   <p>{project.description}</p>
   <p class='text-sm'>{project.status}<br />{project.tech}</p>
   <p>
-    <a href={project.url} target='_blank' rel='noopener noreferrer'>GitHub 源码 ↗</a>{
-      project.id === 'Legion' && (
+    <a href={project.url} target='_blank' rel='noopener noreferrer'>GitHub 仓库 ↗</a>{
+      project.demoUrl && (
         <>
           {' '}
           ·{' '}
-          <a href={`${project.url}/releases/latest`} target='_blank' rel='noopener noreferrer'>
-            下载安装包 ↗
+          <a href={project.demoUrl} target='_blank' rel='noopener noreferrer'>
+            在线体验 ↗
+          </a>
+        </>
+      )
+    }{
+      project.downloadUrl && (
+        <>
+          {' '}
+          ·{' '}
+          <a href={project.downloadUrl} target='_blank' rel='noopener noreferrer'>
+            下载与版本 ↗
           </a>
         </>
       )
@@ -64,8 +74,8 @@ const headings = rendered?.headings ?? [
     )
   }
   <p>
-    <a href={`${project.url}#readme`} target='_blank' rel='noopener noreferrer'
-      >阅读项目 README ↗</a>
+    <a href={`${project.url}#readme`} target='_blank' rel='noopener noreferrer'>阅读项目 README ↗</a
+    >
   </p>
 </PageLayout>
 <MediumZoom />

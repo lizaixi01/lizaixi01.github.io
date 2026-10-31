@@ -31,6 +31,12 @@ const projectIconSet: Record<string, IconsType> = {
   doc: 'document',
   release: 'package'
 }
+const projectLinkLabels: Record<string, string> = {
+  github: 'GitHub 仓库',
+  site: '在线体验',
+  doc: '项目介绍',
+  release: '下载与版本'
+}
 
 const projectId = (name: string) =>
   name
@@ -121,7 +127,8 @@ const analyticsAttrs = (
                     <a
                       href={link.href}
                       class='rounded-full bg-muted p-1 text-muted-foreground transition-colors sm:p-1.5'
-                      aria-label={link.type}
+                      aria-label={`${project.name} · ${projectLinkLabels[link.type]}`}
+                      title={projectLinkLabels[link.type]}
                       target='_blank'
                       rel='noopener noreferrer'
                       {...analyticsAttrs(project, link)}

@@ -1,4 +1,4 @@
-import { site } from '@/data/site'
+import { featuredProjects, site } from '@/data/site'
 
 export const ROOT_LABEL = 'zaixi.devserver'
 export const SOCIAL_LINKS = [
@@ -13,6 +13,6 @@ export const ABOUT_TEXT = [
   '寻找 Agent Harness 工程师实习',
   site.email
 ].join('\n')
-export const NOW_TEXT = 'Legion · PiLoop · Learn-Agent\n执行、上下文管理、记忆与独立验证。'
+export const NOW_TEXT = `${featuredProjects.map((project) => project.name).join(' · ')}\n任务协作、CAD 运行时与 Agent 教学实践。`
 export const README_TEXT =
   'Zaixi Personal Blog\nhelp · ls /blog · ls /projects · cat about · search Agent'
