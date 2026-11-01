@@ -8,7 +8,7 @@ const headings = [
   { depth: 2, slug: 'building', text: 'What I’m Building' },
   { depth: 3, slug: 'agentcad', text: 'AgentCAD' },
   { depth: 3, slug: 'mini-agent', text: 'Mini-Agent' },
-  { depth: 2, slug: 'internship', text: 'Internship' },
+  { depth: 2, slug: 'internship', text: 'Experience' },
   { depth: 2, slug: 'education', text: 'Education' },
   { depth: 2, slug: 'about-blog', text: 'About Blog' }
 ]
@@ -63,8 +63,14 @@ const headings = [
     >
   </p>
   <p><a href='/projects/'>查看全部项目 →</a></p>
-  <h2 id='internship'>Internship</h2>
-  <p><strong>{site.internship.company}</strong> · {site.internship.role}</p>
+  <h2 id='internship'>Experience</h2>
+  {
+    site.experiences.map((experience) => (
+      <p>
+        <strong>{experience.company}</strong> · {experience.role}
+      </p>
+    ))
+  }
   <p><a href='/contact/'>与我联系 →</a></p>
   <h2 id='education'>Education</h2>
   <p>

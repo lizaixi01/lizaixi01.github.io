@@ -103,9 +103,13 @@ const posts = (await getCollection('blog')).sort((a, b) => a.data.order - b.data
         />
       </Section>
       <Section title='Contact'>
-        <p class='text-muted-foreground'>
-          {site.internship.company} · {site.internship.role}
-        </p>
+        {
+          site.experiences.map((experience) => (
+            <p class='text-muted-foreground'>
+              {experience.company} · {experience.role}
+            </p>
+          ))
+        }
         <p class='text-muted-foreground'>欢迎交流 Agent、CAD 工具与项目合作。</p>
         <Button title='Let’s connect' class='w-fit self-end' href='/contact/' variant='ahead' />
       </Section>

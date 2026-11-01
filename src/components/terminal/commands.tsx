@@ -81,8 +81,13 @@ export const commands: CommandRegistry = {
         {
           kind: 'text',
           tone: 'muted',
-          text: `  ↳ ${site.location} · ${site.internship.company} · ${site.internship.role}`
+          text: `  ↳ ${site.location}`
         },
+        ...site.experiences.map<OutputLine>((experience) => ({
+          kind: 'text',
+          tone: 'muted',
+          text: `  ↳ ${experience.company} · ${experience.role}`
+        })),
         {
           kind: 'text',
           tone: 'muted',

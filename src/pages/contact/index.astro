@@ -8,7 +8,7 @@ import wechat from '@/assets/wechat.jpg'
 
 const headings = [
   { depth: 2, slug: 'how-to-reach', text: 'How to Reach Me' },
-  { depth: 2, slug: 'internship', text: 'Internship' }
+  { depth: 2, slug: 'internship', text: 'Experience' }
 ]
 ---
 
@@ -35,6 +35,12 @@ const headings = [
       }
     ]}
   />
-  <h2 id='internship'>Internship</h2>
-  <p><strong>{site.internship.company}</strong> · {site.internship.role}</p>
+  <h2 id='internship'>Experience</h2>
+  {
+    site.experiences.map((experience) => (
+      <p>
+        <strong>{experience.company}</strong> · {experience.role}
+      </p>
+    ))
+  }
 </PageLayout>
