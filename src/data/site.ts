@@ -32,7 +32,8 @@ export const site = {
   location: '成都',
   experiences: [
     { company: '华西数医', role: 'Intern' },
-    { company: '诚益财务', role: 'AI Engineer' }
+    { company: '诚益财务', role: 'AI Engineer' },
+    { company: '杭州伏羲空间', role: 'AI + CAD Agent 开发 · 远程实习（2026 年 11 月 16 日起）' }
   ],
   cities: ['北京', '上海', '杭州', '深圳', '成都']
 }
